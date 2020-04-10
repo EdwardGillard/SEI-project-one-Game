@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+header{
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+body{
+  margin: 0px;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+main{
+  width: 60%;
+  background-color: white;
+}
+
+.game-board{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  align-items: center;
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 700px;
+  height: 700px;
+}
+
+.grid div{
+  border: 1px solid lightgrey;
+  flex-grow: 1;
+  height: 5%;
+  width: 5%;
+}
+
+.grid div.drake{
+  background-image: url('../Pictures/rs-214037-Screen-Shot-2015-10-23-at-11.10.18-AM.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: move-drake-right 5s linear infinite;
+  border: none;
+}
+
