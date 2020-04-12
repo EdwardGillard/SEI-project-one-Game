@@ -105,13 +105,13 @@ function init() {
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
       console.log(`record count: ${recordCount} score count: ${scoreCount} `)
-      if (recordCount === 1) {
+      if (recordCount % 10 === 0 ) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         squares[goldenPosition].classList.add('golden')
         golden = setTimeout(() => {
           squares[goldenPosition].classList.remove('golden')
           
-        }, 5000)
+        }, 8000)
       }
     } 
     if (squares[drakePosition].classList.contains('golden')) {
