@@ -16,6 +16,8 @@ function init() {
   let scoreCount = 0
   let beganGame = false
   let recordCount = 0
+  let goldenPosition = 0
+  let golden
 
 
   //* functions
@@ -39,8 +41,6 @@ function init() {
       squares[recordPosition].classList.add('record')
     }
   }
-
-
 
   function handleMovements(event) {
     const x = drakePosition % width
@@ -104,8 +104,21 @@ function init() {
       scoreCount += 10
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
-      console.log(`record court ${scoreCount}`)
-
+      console.log(`record count: ${recordCount} score count: ${scoreCount} `)
+      if (recordCount === 1) {
+        goldenPosition = Math.floor(Math.random() * numberOfSquares)
+        squares[goldenPosition].classList.add('golden')
+        golden = setTimeout(() => {
+          squares[goldenPosition].classList.remove('golden')
+          
+        }, 5000)
+      }
+    } 
+    if (squares[drakePosition].classList.contains('golden')) {
+      squares[goldenPosition].classList.remove('golden')
+      scoreCount += 30
+      clearTimeout(golden)
+      console.log(`golden record score: ${scoreCount}`)
     }
   }
 
