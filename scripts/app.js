@@ -5,6 +5,7 @@ function init() {
   // * DOM elements
   const gameBoard = document.querySelector('.grid')
   const squares = []
+  const drakeSnake = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
 
   //GridInfo
   const width = 10
@@ -45,9 +46,10 @@ function init() {
   function handleMovements(event) {
     const x = drakePosition % width
     const y = Math.floor(drakePosition / width)
+
     switch (event.keyCode) {
       case 68:
-        if ((x < width - 1)) {
+        if (x < width - 1) {
           clearInterval(movePlease)
           movePlease = setInterval(() => {
             squares[drakePosition].classList.remove('drake')
@@ -55,7 +57,6 @@ function init() {
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-            if (event.keycode === 65) return false
           }, 100)
         }
         break
