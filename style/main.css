@@ -22,7 +22,7 @@ main{
 }
 
 .game-board{
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
 }
@@ -40,15 +40,26 @@ main{
 .grid div{
   border: 1px solid lightgrey;
   flex-grow: 1;
-  height: 5%;
-  width: 5%;
+  height: 10%;
+  width: 10%;
 }
 
 .grid div.drake{
-  background-image: url('../Pictures/rs-214037-Screen-Shot-2015-10-23-at-11.10.18-AM.png');
+  background-image: url('../Pictures/10054621_rs-214037-Screen-Shot-2015-10-23-at-11.10.18-AM.png');
   background-repeat: no-repeat;
   background-size: contain;
-  animation: move-drake-right 5s linear infinite;
   border: none;
+}
+
+.grid div.record{
+  background-image: url('../Pictures/download.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.golden{
+  background-image: url('../Pictures/b3c8dd2bfaf113b7d29986a4b02d556e_royalty-free-gold-records-clip-art-vector-images-illustrations-_612-592.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
