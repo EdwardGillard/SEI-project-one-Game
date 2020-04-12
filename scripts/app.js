@@ -55,7 +55,8 @@ function init() {
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-          }, 500)
+            if (event.keycode === 65) return false
+          }, 100)
         }
         break
       case 65:
@@ -67,7 +68,7 @@ function init() {
             drakePosition--
             squares[drakePosition].classList.add('drake-left')
             recordsCaught(drakePosition)
-          }, 500)
+          }, 100)
         }
         break
       case 87:
@@ -79,7 +80,7 @@ function init() {
             drakePosition -= width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-          }, 500)
+          }, 100)
         }
         break
       case 83:
@@ -91,7 +92,7 @@ function init() {
             drakePosition += width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-          }, 500)
+          }, 100)
         }
         break
       default:
