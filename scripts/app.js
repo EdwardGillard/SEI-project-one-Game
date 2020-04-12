@@ -46,44 +46,48 @@ function init() {
     const x = drakePosition % width
     const y = Math.floor(drakePosition / width)
     switch (event.keyCode) {
-      case 39:
-        if (x < width - 1) {
+      case 68:
+        if ((x < width - 1)) {
           clearInterval(movePlease)
           movePlease = setInterval(() => {
             squares[drakePosition].classList.remove('drake')
+            squares[drakePosition].classList.remove('drake-left')
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
           }, 500)
         }
         break
-      case 37:
+      case 65:
         if (x > 0) {
           clearInterval(movePlease)
           movePlease = setInterval(() => {
             squares[drakePosition].classList.remove('drake')
+            squares[drakePosition].classList.remove('drake-left')
             drakePosition--
-            squares[drakePosition].classList.add('drake')
+            squares[drakePosition].classList.add('drake-left')
             recordsCaught(drakePosition)
           }, 500)
         }
         break
-      case 38:
+      case 87:
         if (y > 0) {
           clearInterval(movePlease)
           movePlease = setInterval(() => {
             squares[drakePosition].classList.remove('drake')
+            squares[drakePosition].classList.remove('drake-left')
             drakePosition -= width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
           }, 500)
         }
         break
-      case 40:
+      case 83:
         if (y < width - 1) {
           clearInterval(movePlease)
           movePlease = setInterval(() => {
             squares[drakePosition].classList.remove('drake')
+            squares[drakePosition].classList.remove('drake-left')
             drakePosition += width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)

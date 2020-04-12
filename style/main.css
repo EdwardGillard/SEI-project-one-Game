@@ -51,6 +51,12 @@ main{
   border: none;
 }
 
+.grid div.drake-left{
+  background-image: url('../Pictures/rs-214037-Screen-Shot-2015-10-23-at-11.10.18-AM.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .grid div.record{
   background-image: url('../Pictures/download.png');
   background-repeat: no-repeat;
