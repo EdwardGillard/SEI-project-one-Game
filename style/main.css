@@ -3,14 +3,17 @@
 }
 
 header{
-  width: 100%;
+  width: 60%;
   margin: 0;
   text-align: center;
+  background-color: white;
 }
 
 body{
   margin: 0px;
-  background-color: grey;
+  background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
+  background-repeat: repeat-y;
+  background-size: 200px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -35,6 +38,7 @@ main{
   justify-content: center;
   width: 700px;
   height: 700px;
+  background-image: url('../Pictures/d8f.jpg');
 }
 
 .grid div{
