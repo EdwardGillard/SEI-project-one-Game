@@ -1,6 +1,6 @@
 function init() {
   //* Sanity check
-  console.log('Hello World')
+  // console.log('Hello World')
 
   // * DOM elements
   const gameBoard = document.querySelector('.grid')
@@ -23,6 +23,7 @@ function init() {
   let recordCount = 0
   let goldenPosition = 0
   let golden
+  let direction
 
 
   //* functions
@@ -53,6 +54,7 @@ function init() {
   function handleMovements(event) {
     switch (event.keyCode) {
       case 68:
+        direction = 'right'
         clearInterval(movePlease)
         movePlease = setInterval(() => {
           const x = drakePosition % width
@@ -62,12 +64,14 @@ function init() {
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
+            growTheSnake()
             // console.log(drakePosition)
             // console.log(drakePosition % width)
           }
         }, 300)
         break
       case 65:
+        direction = 'left'
         clearInterval(movePlease)
         movePlease = setInterval(() => {
           const x = drakePosition % width
@@ -77,10 +81,12 @@ function init() {
             drakePosition--
             squares[drakePosition].classList.add('drake-left')
             recordsCaught(drakePosition)
+            growTheSnake()
           }
         }, 300)
         break
       case 87:
+        direction = 'up'
         clearInterval(movePlease)
         movePlease = setInterval(() => {
           const y = Math.floor(drakePosition / width)
@@ -90,10 +96,12 @@ function init() {
             drakePosition -= width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
+            growTheSnake()
           }
         }, 300)
         break
       case 83:
+        direction = 'down'
         clearInterval(movePlease)
         movePlease = setInterval(() => {
           const y = Math.floor(drakePosition / width)
@@ -103,14 +111,17 @@ function init() {
             drakePosition += width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
+            growTheSnake()
           }
         }, 300)
+        
         break
       default:
         // console.log('invalid keys')
         // } console.log(drakePosition)
         squares[drakePosition].classList.add('drake')
     }
+    return direction
   }
 
   function recordsCaught(drakePosition) {
@@ -121,8 +132,8 @@ function init() {
       score.textContent = scoreCount
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
-      buildTheSnake(drakePosition, recordCount)
-      console.log(`record count: ${recordCount} score count: ${scoreCount} `)
+      // buildTheSnake(drakePosition, recordCount)
+      // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       if (recordCount % 10 === 0) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         squares[goldenPosition].classList.add('golden')
@@ -139,23 +150,36 @@ function init() {
     }
   }
 
-  function buildTheSnake(drakePosition, recordCount){
-    console.log(drakePosition, recordCount)
-    drakeArray.forEach(arrayNumber => {
-      drakeSnake.push(arrayNumber)
-    } )
-
+  function growTheSnake () {
+    console.log(direction)
   }
+
+  // function buildTheSnake(drakePosition, recordCount) {
+  //   console.log(drakePosition, recordCount)
+  //   let i = recordCount
+  //   for (i = 0; i < drakeArray.length; i++) {
+  //     drakeSnake.push(drakeArray)
+  //     drakePosition.appendChild(drakeArray)
+
+  //   }
+  //   drakeArray.forEach(arrayNumber => {
+  //     drakeSnake.push(arrayNumber)
+  //     console.log(drakeSnake)
+  //   })
+
+
+  // }
 
   // function collision() {
   // }
 
-  
+
   createTheBoard(drakePosition)
+  
 
   document.addEventListener('keyup', handleMovements)
   document.addEventListener('keyup', playTheGame)
-  
+
 
 }
 window.addEventListener('DOMContentLoaded', init)
