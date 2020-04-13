@@ -65,6 +65,12 @@ header, main{
   border-left: 3px solid black;
 } 
 
+.score-tag, .score{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 .grid {
   align-items: center;
   border: 5px solid black;
