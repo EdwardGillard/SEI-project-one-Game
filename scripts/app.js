@@ -64,7 +64,6 @@ function init() {
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-            growTheSnake()
             // console.log(drakePosition)
             // console.log(drakePosition % width)
           }
@@ -81,7 +80,6 @@ function init() {
             drakePosition--
             squares[drakePosition].classList.add('drake-left')
             recordsCaught(drakePosition)
-            growTheSnake()
           }
         }, 300)
         break
@@ -96,7 +94,6 @@ function init() {
             drakePosition -= width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-            growTheSnake()
           }
         }, 300)
         break
@@ -111,17 +108,15 @@ function init() {
             drakePosition += width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-            growTheSnake()
           }
         }, 300)
-        
+
         break
       default:
         // console.log('invalid keys')
         // } console.log(drakePosition)
         squares[drakePosition].classList.add('drake')
     }
-    return direction
   }
 
   function recordsCaught(drakePosition) {
@@ -132,6 +127,7 @@ function init() {
       score.textContent = scoreCount
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
+      growTheSnake()
       // buildTheSnake(drakePosition, recordCount)
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       if (recordCount % 10 === 0) {
@@ -150,16 +146,28 @@ function init() {
     }
   }
 
-  function growTheSnake () {
+  function growTheSnake() {
     // console.log(direction)
+    // console.log(recordCount)
+    console.log(drakeSnake.length)
+    // squares[drakeSnake.length + 1].push(drakeArray[1])
+    // console.log(drakeSnake.length)
+
     if (direction === 'left') {
-      console.log('drake is going left')
+      drakeSnake.length++
+      // squares[drakeArray.length + 1]
+      // console.log(drakeArray)
+      // console.log('drake is going left')
     } else if (direction === 'right') {
-      console.log('drake is going right')
+      drakeSnake.length--
+      // console.log('drake is going right')
     } else if (direction === 'up') {
-      console.log('drake is going up')
-    } else if (direction === 'down'){
-      console.log('drake is going down')
+      drakeSnake.length-=
+      // console.log('drake is going up')
+    } else if (direction === 'down') {
+      drakeSnake+=
+      drakeSnake.length+=
+      // console.log('drake is going down')
     }
   }
 
@@ -184,7 +192,7 @@ function init() {
 
 
   createTheBoard(drakePosition)
-  
+
 
   document.addEventListener('keyup', handleMovements)
   document.addEventListener('keyup', playTheGame)
