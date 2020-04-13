@@ -5,7 +5,8 @@ function init() {
   // * DOM elements
   const gameBoard = document.querySelector('.grid')
   const squares = []
-  const drakeSnake = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
+  const drakeArray = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
+  const drakeSnake = ['drakePosition']
   const score = document.querySelector('.score')
 
   //GridInfo
@@ -61,7 +62,6 @@ function init() {
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-            collision(drakePosition)
             // console.log(drakePosition)
             // console.log(drakePosition % width)
           }
@@ -121,6 +121,7 @@ function init() {
       score.textContent = scoreCount
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
+      buildTheSnake(drakePosition, recordCount)
       console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       if (recordCount % 10 === 0) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
@@ -138,10 +139,12 @@ function init() {
     }
   }
 
-  function collision(drakePosition) {
-    if (drakePosition === width - 2){
-      console.log('collision')
-    }
+  function buildTheSnake(drakePosition, recordCount){
+    console.log(drakePosition, recordCount)
+
+  }
+
+  function collision() {
   }
 
   
