@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body{
+#background{
   margin: 0px;
   background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
   background-repeat: repeat;
@@ -12,16 +12,40 @@ body{
   flex-direction: column;
 }
 
+.background div .background-change{
+  background-image: url('../Pictures/backgroundchange.jpeg');
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
 header{
   width: 70%;
   margin: 0;
   text-align: center;
   background-color: white;
+  border-top: 3px solid black;
+  height: 155px;
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.instructions{
+  text-align: center;
+  padding: 0 140px;
+}
+
+h1{
+  font-size: 50px;
+  letter-spacing: 15px;
+  font-family: 'Gloria Hallelujah', cursive;
+  margin-bottom: 0;
 }
 
 main{
   width: 70%;
   background-color: white;
+  border-bottom: 3px solid black;
 }
 
 .buttons{
@@ -42,6 +66,11 @@ main{
   justify-content: center;
 }
 
+header, main{
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+} 
+
 .grid {
   align-items: center;
   border: 5px solid black;
@@ -51,6 +80,12 @@ main{
   width: 700px;
   height: 700px;
   background-image: url('../Pictures/d8f.jpg');
+}
+
+.grid .drake-change{
+  background-image: url('../Pictures/drake.png');
+  background-repeat: repeat;
+  background-size: contain;
 }
 
 .grid div{

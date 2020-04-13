@@ -5,14 +5,14 @@ function init() {
   // * DOM elements
   const gameBoard = document.querySelector('.grid')
   const squares = []
-  const lasers = document.querySelector('.laser')
   const drakeSnake = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
   const score = document.querySelector('.score')
 
   //GridInfo
   const width = 10
   const numberOfSquares = width * width
-  
+
+  //Variables
 
   let drakePosition = 0
   let movePlease
@@ -36,13 +36,16 @@ function init() {
     squares[startPosition].classList.add('drake')
   }
 
-  function runTheTrap(event) {
+  function playTheGame(event) {
     if (event.keyCode === 32) {
       if (beganGame) return
-      console.log('game began')
+      // console.log('game began')
       beganGame = true
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
+      document.querySelector('.instructions').style.display = 'none'
+      document.querySelector('header').style.display = 'none'
+      document.querySelector('.game-board').style.margin = '50px 0 5px 0'
     }
   }
 
@@ -58,6 +61,7 @@ function init() {
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
+            collision(drakePosition)
             // console.log(drakePosition)
             // console.log(drakePosition % width)
           }
@@ -130,14 +134,22 @@ function init() {
       squares[goldenPosition].classList.remove('golden')
       scoreCount += 30
       clearTimeout(golden)
-      console.log(`golden record score: ${scoreCount}`)
+      // console.log(`golden record score: ${scoreCount}`)
     }
   }
 
+  function collision(drakePosition) {
+    if (drakePosition === width - 2){
+      console.log('collision')
+    }
+  }
+
+  
   createTheBoard(drakePosition)
 
   document.addEventListener('keyup', handleMovements)
-  document.addEventListener('keyup', runTheTrap)
+  document.addEventListener('keyup', playTheGame)
+  
 
 }
 window.addEventListener('DOMContentLoaded', init)
