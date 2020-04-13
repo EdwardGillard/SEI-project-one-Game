@@ -12,12 +12,6 @@
   flex-direction: column;
 }
 
-.background div .background-change{
-  background-image: url('../Pictures/backgroundchange.jpeg');
-  background-repeat: repeat;
-  background-size: 200px;
-}
-
 header{
   width: 70%;
   margin: 0;
@@ -82,7 +76,7 @@ header, main{
   background-image: url('../Pictures/d8f.jpg');
 }
 
-.grid .drake-change{
+.grid div.drake-change{
   background-image: url('../Pictures/drake.png');
   background-repeat: repeat;
   background-size: contain;
@@ -116,6 +110,12 @@ header, main{
 
 .grid div.golden{
   background-image: url('../Pictures/b3c8dd2bfaf113b7d29986a4b02d556e_royalty-free-gold-records-clip-art-vector-images-illustrations-_612-592.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.drake1{
+  background-image: url('../Pictures/snake1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

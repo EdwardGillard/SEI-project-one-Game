@@ -6,8 +6,8 @@ function init() {
   const gameBoard = document.querySelector('.grid')
   const squares = []
   const drakeArray = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
-  const drakeSnake = ['drakePosition']
   const score = document.querySelector('.score')
+  const backgroundChange = document.querySelector('#background')
 
   //GridInfo
   const width = 10
@@ -24,6 +24,9 @@ function init() {
   let goldenPosition = 0
   let golden
   let direction
+  let drakeSnake = []
+  drakeSnake.push(drakePosition)
+  console.log(drakeSnake)
 
 
   //* functions
@@ -59,14 +62,20 @@ function init() {
         movePlease = setInterval(() => {
           const x = drakePosition % width
           if (x < width - 1) {
-            squares[drakePosition].classList.remove('drake')
             squares[drakePosition].classList.remove('drake-left')
+            //for (let i = 0; i < drakeSnake.length; i++){
+            squares[drakePosition].classList.remove('drake')
             drakePosition++
             squares[drakePosition].classList.add('drake')
-            recordsCaught(drakePosition)
-            // console.log(drakePosition)
-            // console.log(drakePosition % width)
+            //squares[i].classList.remove('drake1')
+            //squares[i].classList.add('drake1')
+            //i++
+            //squares[i].classList.remove('drake1')
           }
+          //squares[drakePosition].classList.add('drake')
+          recordsCaught(drakePosition)
+          // console.log(drakePosition)
+          // console.log(drakePosition % width)
         }, 300)
         break
       case 65:
@@ -127,62 +136,59 @@ function init() {
       score.textContent = scoreCount
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
-      growTheSnake()
+      // growTheSnake(drakePosition)
       // buildTheSnake(drakePosition, recordCount)
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       if (recordCount % 10 === 0) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         squares[goldenPosition].classList.add('golden')
+        backgroundChange.style.backgroundImage = 'url("Pictures/backgroundchange.png")'
+        backgroundChange.style.backgroundSize = '200px'
+        backgroundChange.style.backgroundRepeat = 'repeat'
+        gameBoard.style.backgroundImage = 'url("Pictures/backgroundchange1.png")'
+        gameBoard.style.backgroundSize = 'cover'
         golden = setTimeout(() => {
           squares[goldenPosition].classList.remove('golden')
-        }, 8000)
+          backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
+          gameBoard.style.backgroundImage = 'url("Pictures/d8f.jpg")'
+        }, 10000)
       }
     }
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
       scoreCount += 30
       clearTimeout(golden)
+      backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
+      gameBoard.style.backgroundImage = 'url("Pictures/d8f.jpg")'
       // console.log(`golden record score: ${scoreCount}`)
     }
   }
 
-  function growTheSnake() {
-    // console.log(direction)
-    // console.log(recordCount)
-    console.log(drakeSnake.length)
-    // squares[drakeSnake.length + 1].push(drakeArray[1])
-    // console.log(drakeSnake.length)
-
-    if (direction === 'left') {
-      drakeSnake.length++
-      // squares[drakeArray.length + 1]
-      // console.log(drakeArray)
-      // console.log('drake is going left')
-    } else if (direction === 'right') {
-      drakeSnake.length--
-      // console.log('drake is going right')
-    } else if (direction === 'up') {
-      drakeSnake.length-=
-      // console.log('drake is going up')
-    } else if (direction === 'down') {
-      drakeSnake+=
-      drakeSnake.length+=
-      // console.log('drake is going down')
-    }
-  }
-
-  // function buildTheSnake(drakePosition, recordCount) {
-  //   console.log(drakePosition, recordCount)
-  //   let i = recordCount
-  //   for (i = 0; i < drakeArray.length; i++) {
-  //     drakeSnake.push(drakeArray)
-  //     drakePosition.appendChild(drakeArray)
-
+  // function growTheSnake(drakePosition) {
+  //   // console.log(direction)
+  //   // console.log(recordCount)
+  //   // let newDrakeSnake = drakeSnake.push('drakeArray')
+  //   // console.log(drakeSnake.length)
+  //   drakeSnake.push(drakePosition)
+  //   if (direction === 'left') {
+  //     // squares[drakeArray.length + 1]
+  //     // console.log(drakeArray)
+  //     console.log('drake is going left')
+  //   } else if (direction === 'right') {
+  //     // drakeSnake.length--
+  //     for (let i = 0; i < drakeSnake.length; i++) {
+  //       squares[drakeSnake - 1].classList.add('drake1')
+  //       squares[drakeSnake - 1].classList.remove('drake1')
+  //     }
+  //     console.log(drakeSnake.length)
+  //     console.log('drake is going right')
+  //   } else if (direction === 'up') {
+  //     drakeSnake.length -= width
+  //     console.log('drake is going up')
+  //   } else if (direction === 'down') {
+  //     drakeSnake.length += width
+  //     console.log('drake is going down')
   //   }
-  //   drakeArray.forEach(arrayNumber => {
-  //     drakeSnake.push(arrayNumber)
-  //     console.log(drakeSnake)
-  //   })
 
 
   // }
@@ -199,4 +205,5 @@ function init() {
 
 
 }
+
 window.addEventListener('DOMContentLoaded', init)
