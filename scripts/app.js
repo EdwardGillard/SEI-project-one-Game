@@ -151,7 +151,16 @@ function init() {
   }
 
   function growTheSnake () {
-    console.log(direction)
+    // console.log(direction)
+    if (direction === 'left') {
+      console.log('drake is going left')
+    } else if (direction === 'right') {
+      console.log('drake is going right')
+    } else if (direction === 'up') {
+      console.log('drake is going up')
+    } else if (direction === 'down'){
+      console.log('drake is going down')
+    }
   }
 
   // function buildTheSnake(drakePosition, recordCount) {
