@@ -5,11 +5,14 @@ function init() {
   // * DOM elements
   const gameBoard = document.querySelector('.grid')
   const squares = []
+  const lasers = document.querySelector('.laser')
   const drakeSnake = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
+  const score = document.querySelector('.score')
 
   //GridInfo
   const width = 10
   const numberOfSquares = width * width
+  
 
   let drakePosition = 0
   let movePlease
@@ -27,7 +30,7 @@ function init() {
     for (let i = 0; i < numberOfSquares; i++) {
       const square = document.createElement('div')
       gameBoard.appendChild(square)
-      square.textContent = i
+      // square.textContent = i
       squares.push(square)
     }
     squares[startPosition].classList.add('drake')
@@ -44,57 +47,60 @@ function init() {
   }
 
   function handleMovements(event) {
-    const x = drakePosition % width
-    const y = Math.floor(drakePosition / width)
-
     switch (event.keyCode) {
       case 68:
-        if (x < width - 1) {
-          clearInterval(movePlease)
-          movePlease = setInterval(() => {
+        clearInterval(movePlease)
+        movePlease = setInterval(() => {
+          const x = drakePosition % width
+          if (x < width - 1) {
             squares[drakePosition].classList.remove('drake')
             squares[drakePosition].classList.remove('drake-left')
             drakePosition++
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-          }, 100)
-        }
+            // console.log(drakePosition)
+            // console.log(drakePosition % width)
+          }
+        }, 300)
         break
       case 65:
-        if (x > 0) {
-          clearInterval(movePlease)
-          movePlease = setInterval(() => {
+        clearInterval(movePlease)
+        movePlease = setInterval(() => {
+          const x = drakePosition % width
+          if (x > 0) {
             squares[drakePosition].classList.remove('drake')
             squares[drakePosition].classList.remove('drake-left')
             drakePosition--
             squares[drakePosition].classList.add('drake-left')
             recordsCaught(drakePosition)
-          }, 100)
-        }
+          }
+        }, 300)
         break
       case 87:
-        if (y > 0) {
-          clearInterval(movePlease)
-          movePlease = setInterval(() => {
+        clearInterval(movePlease)
+        movePlease = setInterval(() => {
+          const y = Math.floor(drakePosition / width)
+          if (y > 0) {
             squares[drakePosition].classList.remove('drake')
             squares[drakePosition].classList.remove('drake-left')
             drakePosition -= width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-          }, 100)
-        }
+          }
+        }, 300)
         break
       case 83:
-        if (y < width - 1) {
-          clearInterval(movePlease)
-          movePlease = setInterval(() => {
+        clearInterval(movePlease)
+        movePlease = setInterval(() => {
+          const y = Math.floor(drakePosition / width)
+          if (y < width - 1) {
             squares[drakePosition].classList.remove('drake')
             squares[drakePosition].classList.remove('drake-left')
             drakePosition += width
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
-          }, 100)
-        }
+          }
+        }, 300)
         break
       default:
         // console.log('invalid keys')
@@ -108,18 +114,18 @@ function init() {
       squares[recordPosition].classList.remove('record')
       recordCount++
       scoreCount += 10
+      score.textContent = scoreCount
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
       console.log(`record count: ${recordCount} score count: ${scoreCount} `)
-      if (recordCount % 10 === 0 ) {
+      if (recordCount % 10 === 0) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         squares[goldenPosition].classList.add('golden')
         golden = setTimeout(() => {
           squares[goldenPosition].classList.remove('golden')
-          
         }, 8000)
       }
-    } 
+    }
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
       scoreCount += 30

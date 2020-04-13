@@ -2,37 +2,49 @@
   box-sizing: border-box;
 }
 
-header{
-  width: 60%;
-  margin: 0;
-  text-align: center;
-  background-color: white;
-}
-
 body{
   margin: 0px;
   background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   background-size: 200px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-main{
-  width: 60%;
+header{
+  width: 70%;
+  margin: 0;
+  text-align: center;
   background-color: white;
 }
 
-.game-board{
-  height: 90vh;
+main{
+  width: 70%;
+  background-color: white;
+}
+
+.buttons{
   display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.btn{
+  width: 60px;
+}
+
+.game-board{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 .grid {
   align-items: center;
-  border: 2px solid black;
+  border: 5px solid black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -42,7 +54,7 @@ main{
 }
 
 .grid div{
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
