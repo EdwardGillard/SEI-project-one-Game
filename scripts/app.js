@@ -141,11 +141,14 @@ function init() {
 
   function buildTheSnake(drakePosition, recordCount){
     console.log(drakePosition, recordCount)
+    drakeArray.forEach(arrayNumber => {
+      drakeSnake.push(arrayNumber)
+    } )
 
   }
 
-  function collision() {
-  }
+  // function collision() {
+  // }
 
   
   createTheBoard(drakePosition)
