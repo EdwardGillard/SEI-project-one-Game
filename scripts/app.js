@@ -25,8 +25,6 @@ function init() {
   let golden
   let direction
   let drakeSnake = []
-  drakeSnake.push(drakePosition)
-  console.log(drakeSnake)
 
 
   //* functions
@@ -63,17 +61,20 @@ function init() {
         movePlease = setInterval(() => {
           const x = drakePosition % width
           if (x < width - 1) {
-            squares[drakePosition].classList.remove('drake-left')
-            //for (let i = 0; i < drakeSnake.length; i++){
-            squares[drakePosition].classList.remove('drake')
+            drakeSnake.forEach(index => {
+              squares[index].classList.remove('drake')
+              squares[index].classList.remove('drake-left')
+            })
             drakePosition++
+            drakeSnake.unshift(drakePosition)
+            drakeSnake.pop()
             squares[drakePosition].classList.add('drake')
-            //squares[i].classList.remove('drake1')
-            //squares[i].classList.add('drake1')
-            //i++
-            //squares[i].classList.remove('drake1')
+            console.log(drakeSnake)
+            drakeSnake.forEach(index => {
+              squares[index].classList.add('drake')
+            })
+
           }
-          //squares[drakePosition].classList.add('drake')
           recordsCaught(drakePosition)
           // console.log(drakePosition)
           // console.log(drakePosition % width)
@@ -85,11 +86,18 @@ function init() {
         movePlease = setInterval(() => {
           const x = drakePosition % width
           if (x > 0) {
-            squares[drakePosition].classList.remove('drake')
-            squares[drakePosition].classList.remove('drake-left')
+            drakeSnake.forEach(index => {
+              squares[index].classList.remove('drake')
+              squares[index].classList.remove('drake-left')
+            })
             drakePosition--
-            squares[drakePosition].classList.add('drake-left')
+            drakeSnake.unshift(drakePosition)
+            drakeSnake.pop()
+            drakeSnake.forEach(index => {
+              squares[index].classList.add('drake')
+            })
             recordsCaught(drakePosition)
+            console.log(drakeSnake)
           }
         }, 300)
         break
@@ -99,11 +107,16 @@ function init() {
         movePlease = setInterval(() => {
           const y = Math.floor(drakePosition / width)
           if (y > 0) {
-            squares[drakePosition].classList.remove('drake')
-            squares[drakePosition].classList.remove('drake-left')
+            drakeSnake.forEach(index => {
+              squares[index].classList.remove('drake')
+              squares[index].classList.remove('drake-left')
+            })
             drakePosition -= width
+            drakeSnake.unshift(drakePosition)
+            drakeSnake.pop()
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
+            console.log(drakeSnake)
           }
         }, 300)
         break
@@ -116,8 +129,11 @@ function init() {
             squares[drakePosition].classList.remove('drake')
             squares[drakePosition].classList.remove('drake-left')
             drakePosition += width
+            drakeSnake.unshift(drakePosition)
+            drakeSnake.pop()
             squares[drakePosition].classList.add('drake')
             recordsCaught(drakePosition)
+            console.log(drakeSnake)
           }
         }, 300)
 
@@ -137,7 +153,7 @@ function init() {
       score.textContent = scoreCount
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
-      // growTheSnake(drakePosition)
+      growTheSnake()
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       if (recordCount % 10 === 0) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
@@ -164,30 +180,29 @@ function init() {
     }
   }
 
-  // function growTheSnake(drakePosition) {
-  //    console.log(direction)
-  //    console.log(recordCount)
-  //    let newDrakeSnake = drakeSnake.push('drakeArray')
-  //    console.log(drakeSnake.length)
-  //   drakeSnake.push(drakePosition)
-  //   if (direction === 'left') {
-  //     squares[drakeArray.length + 1]
-  //     console.log(drakeArray)
-  //     console.log('drake is going left')
-  //   } else if (direction === 'right') {
-  //     for (let i = 0; i < drakeSnake.length; i++) {
-  //     squares[drakeSnake - 1].classList.add('drake1')
-  //     squares[drakeSnake - 1].classList.remove('drake1')
-  //     console.log(drakePosition.length)
-  //     console.log('drake is going right')
-  //   } else if (direction === 'up') {
-  //     drakeSnake.length -= width
-  //     console.log('drake is going up')
-  //   } else if (direction === 'down') {
-  //     drakeSnake.length += width
-  //     console.log('drake is going down')
-  //   }
-  // }
+  function growTheSnake() {
+    // console.log(direction)
+    // console.log(recordCount)
+    // console.log(drakeSnake.length)
+    if (direction === 'right') {// * << defining the direction the snakes moving.
+      drakePosition++
+      drakeSnake.unshift(drakePosition)
+      console.log(drakePosition)
+      console.log(drakeSnake)
+    } else if (direction === 'left') {
+      drakePosition--
+      drakeSnake.unshift(drakePosition)
+    } else if (direction === 'up') {
+      drakePosition -= width
+      drakeSnake.unshift(drakePosition)
+      console.log('drake is going up')
+    } else if (direction === 'down') {
+      drakePosition.length += width
+      drakeSnake.unshift(drakePosition)
+      console.log('drake is going down')
+    }
+  }
+
 
   // function collision() {
   // }
