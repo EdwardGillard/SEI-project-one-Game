@@ -23,6 +23,7 @@ function init() {
   let beganGame = false
   let recordCount = 0
   let golden
+  let speedChanger
   let goldenPosition = 0
   let direction = 'right'
   let drakeSnake = []
@@ -40,24 +41,39 @@ function init() {
     squares[startPosition].classList.add('drake')
   }
 
+  function difficulty(event) {
+
+    
+  }
+
   function playTheGame(event) {
     //* Event listener
-    if (event.keyCode === 32) {
-      if (beganGame) return
-      // console.log('game began')
-      beganGame = true
-      //* create first record
-      recordPosition = Math.floor(Math.random() * numberOfSquares)
-      squares[recordPosition].classList.add('record')
-      //* Start Movement
+    // console.log(event.target.value)
+    if (beganGame) return
+    // console.log('game began')
+    beganGame = true
+    //* create first record
+    recordPosition = Math.floor(Math.random() * numberOfSquares)
+    squares[recordPosition].classList.add('record')
+    
+    //* DOM Changes on game start
+    document.querySelector('.instructions').style.display = 'none'
+    document.querySelector('header').style.display = 'none'
+    document.querySelector('.game-board').style.margin = '90px 0 5px 0'
+    document.querySelector('main').style.backgroundColor = 'black'
+    //* Start Movement
+    if (event.target.value === 'hard') {
+      console.log('clicked hard')
       setInterval(moveDrake, 200)
-      //* DOM Changes on game start
-      document.querySelector('.instructions').style.display = 'none'
-      document.querySelector('header').style.display = 'none'
-      document.querySelector('.game-board').style.margin = '90px 0 5px 0'
-      document.querySelector('main').style.backgroundColor = 'black'
+    } else if (event.target.value === 'medium') {
+      console.log('clicked Medium')
+      setInterval(moveDrake, 700)
+    } else if (event.target.value === 'easy') {
+      console.log('clicked easy')
+      setInterval(moveDrake, 1000)
     }
   }
+
 
   function moving(event) {
     switch (event.keyCode) {
@@ -206,18 +222,6 @@ function init() {
     }
   }
 
-  function difficulty (event){
-    console.log(event.target.value)
-    if (event.target.value === 'hard'){
-      console.log('clicked hard')
-    } else if (event.target.value === 'medium'){
-      console.log('clicked Medium')
-    } else if (event.target.value === 'easy'){
-      console.log('clicked easy')
-    }
-
-  }
-
 
   // function collision() {
   //   //* create set of rules for if snake crashes
@@ -229,9 +233,8 @@ function init() {
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
 
-  buttonsAll.addEventListener('click', difficulty)
+  buttonsAll.addEventListener('click', playTheGame)
   document.addEventListener('keyup', moving)
-  document.addEventListener('keyup', playTheGame)
 }
 
 window.addEventListener('DOMContentLoaded', init)
