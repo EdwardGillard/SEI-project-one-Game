@@ -138,7 +138,25 @@ header, main{
 }
 
 .grid div.drake1{
+  background-image: url('../Pictures/snake2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.drake2{
+  background-image: url('../Pictures/snake3.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.drake3{
   background-image: url('../Pictures/snake1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.drake4{
+  background-image: url('../Pictures/snake4.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

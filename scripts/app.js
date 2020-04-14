@@ -7,9 +7,6 @@ function init() {
   const squares = []
   const score = document.querySelector('.score')
   const backgroundChange = document.querySelector('#background')
-  // const buttonEasy = document.querySelector('#but-one')
-  // const buttonMed = document.querySelector('#but-two')
-  // const buttonHard = document.querySelector('#but-three')
   const buttonsAll = document.querySelector('.difficulty-buttons')
 
   //* GridInfo
@@ -58,13 +55,13 @@ function init() {
     //* Start Movement
     if (event.target.value === 'hard') {
       console.log('clicked hard')
-      setInterval(moveDrake, 200)
+      speedChanger = setInterval(moveDrake, 200)
     } else if (event.target.value === 'medium') {
       console.log('clicked Medium')
-      setInterval(moveDrake, 700)
+      speedChanger = setInterval(moveDrake, 700)
     } else if (event.target.value === 'easy') {
       console.log('clicked easy')
-      setInterval(moveDrake, 1000)
+      speedChanger = setInterval(moveDrake, 1000)
     }
   }
 
@@ -105,8 +102,9 @@ function init() {
     squares[drakePosition].classList.remove('drake')
     squares[drakePosition].classList.remove('drake-left')
     drakeSnake.forEach(index => {
-      squares[index].classList.remove('drake')
-      squares[index].classList.remove('drake-left')
+      squares[index].classList.remove('drake1')
+      squares[index].classList.remove('drake2')
+      squares[index].classList.remove('drake3')
     })
 
     //* define array movement movements
@@ -123,9 +121,6 @@ function init() {
       if (x > 0) {
         drakePosition--
         squares[drakePosition].classList.add('drake-left')
-        drakeSnake.forEach(index => {
-          squares[index].classList.add('drake-left')
-        })
       }
     } else if (direction === 'up') {
       if (y > 0) {
@@ -139,10 +134,17 @@ function init() {
     //* add classes back
     squares[drakePosition].classList.add('drake')
     drakeSnake.forEach(index => {
-      squares[index].classList.add('drake')
+      if (index % 3 === 0) {
+        squares[index].classList.add('drake2')
+      } else if (index % 2 === 0){
+        squares[index].classList.add('drake1')
+      } else if (index % 1 === 0){
+        squares[index].classList.add('drake3')
+      }
     })
     //* call the recordsCaught Function
     recordsCaught(drakePosition)
+    collision()
   }
 
   function recordsCaught(drakePosition) {
@@ -217,12 +219,21 @@ function init() {
   }
 
 
-  // function collision() {
-  //   //* create set of rules for if snake crashes
-  //   // if (squares[drakePosition + 1].classList.contains('drake')){
-  //   //   console.log('crashed right')
-  //   // }
-  // }
+  function collision() {
+    //* create set of rules for if snake crashes
+    if (squares[drakePosition].classList.contains('drake1') || squares[drakePosition].classList.contains('drake2') || squares[drakePosition].classList.contains('drake3') || ){
+      console.log('game over')
+      clearInterval(speedChanger)
+      drakeSnake.forEach(index => {
+        squares[drakePosition].classList.remove('drake')
+        squares[index].classList.remove('drake1')
+        squares[index].classList.remove('drake2')
+        squares[index].classList.remove('drake3')
+      })
+      
+
+    }
+  }
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
