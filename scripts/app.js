@@ -70,18 +70,19 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.remove('drake')
                 squares[index].classList.remove('drake-left')
+                squares[index].classList.remove('drake1')
               })
               drakePosition++
               drakeSnake.unshift(drakePosition)
               drakeSnake.pop()
-              squares[drakePosition].classList.add('drake')
-              console.log(drakeSnake)
+              // console.log(drakeSnake)
               drakeSnake.forEach(index => {
                 squares[index].classList.add('drake')
               })
             }
           }
           recordsCaught(drakePosition)
+          collision()
           // console.log(drakePosition)
           // console.log(drakePosition % width)
         }, 300)
@@ -101,7 +102,7 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.remove('drake')
                 squares[index].classList.remove('drake-left')
-                squares[drakePosition].classList.remove('drake')
+                squares[index].classList.remove('drake1')
               })
               squares[drakePosition].classList.remove('drake')
               squares[drakePosition].classList.remove('drake-left')
@@ -112,10 +113,11 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.add('drake-left')
               })
-              recordsCaught(drakePosition)
-              console.log(drakeSnake)
+              // console.log(drakeSnake)
             }
           }
+          recordsCaught(drakePosition)
+          collision()
         }, 300)
         break
       case 87:
@@ -133,6 +135,7 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.remove('drake')
                 squares[index].classList.remove('drake-left')
+                squares[index].classList.remove('drake1')
               })
               drakePosition -= width
               drakeSnake.unshift(drakePosition)
@@ -140,10 +143,11 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.add('drake')
               })
-              recordsCaught(drakePosition)
-              console.log(drakeSnake)
+              // console.log(drakeSnake)
             }
           }
+          recordsCaught(drakePosition)
+          collision()
         }, 300)
         break
       case 83:
@@ -161,6 +165,7 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.remove('drake')
                 squares[index].classList.remove('drake-left')
+                squares[index].classList.remove('drake1')
               })
               drakePosition += width
               drakeSnake.unshift(drakePosition)
@@ -168,10 +173,11 @@ function init() {
               drakeSnake.forEach(index => {
                 squares[index].classList.add('drake')
               })
-              recordsCaught(drakePosition)
-              console.log(drakeSnake)
+              // console.log(drakeSnake)
             }
           }
+          recordsCaught(drakePosition)
+          collision()
         }, 300)
 
         break
@@ -188,28 +194,43 @@ function init() {
       recordCount++
       scoreCount += 10
       score.textContent = scoreCount
+      //* Randomised record position.
       recordPosition = Math.floor(Math.random() * numberOfSquares)
+      //* Preventing randomised record position from clashing with drakePosition or drakeSnake.
+      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left')) {
+        recordPosition = Math.floor(Math.random() * numberOfSquares)
+      }
       squares[recordPosition].classList.add('record')
-      growTheSnake()
+
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
+      //* if recordCount is a multiple of 10...
       if (recordCount % 10 === 0) {
+        //* produce a random position for golden record
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
+        //* to prevent golden label from clashing with any other classes
+        while (squares[goldenPosition].classList.contains('drake') || squares[goldenPosition].classList.contains('drake-left') || squares[goldenPosition].classList.contains('record')) {
+          goldenPosition = Math.floor(Math.random() * numberOfSquares)
+        }
         squares[goldenPosition].classList.add('golden')
+        //* DOM changes for golden record timer
         backgroundChange.style.backgroundImage = 'url("Pictures/backgroundchange.png")'
         backgroundChange.style.backgroundSize = '200px'
         backgroundChange.style.backgroundRepeat = 'repeat'
         gameBoard.style.backgroundImage = 'url("Pictures/backgroundchange1.png")'
         gameBoard.style.backgroundSize = 'cover'
+        //* time out for golden record
         golden = setTimeout(() => {
           squares[goldenPosition].classList.remove('golden')
           backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
           gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
         }, 10000)
       }
+      growTheSnake()
     }
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
       scoreCount += 30
+      recordCount++
       clearTimeout(golden)
       backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
       gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
@@ -221,26 +242,31 @@ function init() {
     // console.log(direction)
     // console.log(recordCount)
     // console.log(drakeSnake.length)
-    if (direction === 'right') {// * << defining the direction the snakes moving.
+    // * defining the direction the snakes moving.
+    if (direction === 'right') {
       drakeSnake.unshift(drakePosition)
-      console.log(drakePosition)
-      console.log(drakeSnake)
+      // console.log(drakePosition)
+      // console.log(drakeSnake)
     } else if (direction === 'left') {
-      drakeSnake.unshift(drakePosition)
+      // drakeSnake.unshift(drakePosition)
     } else if (direction === 'up') {
       drakeSnake.unshift(drakePosition)
-      console.log('drake is going up')
+      // console.log('drake is going up')
     } else if (direction === 'down') {
       drakeSnake.unshift(drakePosition)
-      console.log('drake is going down')
+      // console.log('drake is going down')
     }
   }
 
 
-  // function collision() {
-  // }
+  function collision() {
+    //* create set of rules for if snake crashes
+    if (squares[drakeSnake[0]].classList.contains('drake')){
+      console.log('crashed')
+    }
+  }
 
-
+  //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
 
 
