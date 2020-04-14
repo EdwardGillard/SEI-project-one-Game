@@ -5,26 +5,21 @@ function init() {
   // * DOM elements
   const gameBoard = document.querySelector('.grid')
   const squares = []
-  const drakeArray = ['../Pictures/snake1', '../Pictures/snake2', '../Pictures.snake3', '../Pictures.snake4']
   const score = document.querySelector('.score')
   const backgroundChange = document.querySelector('#background')
 
-  //GridInfo
+  //* GridInfo
   const width = 10
   const numberOfSquares = width * width
 
-  //Variables
-
+  //* Variables
   let drakePosition = 0
-  let movePlease
   let recordPosition = 0
   let scoreCount = 0
   let beganGame = false
   let recordCount = 0
   let goldenPosition = 0
-  let golden
   let direction = 'right'
-  let nextDirection
   let drakeSnake = []
 
 
@@ -41,12 +36,17 @@ function init() {
   }
 
   function playTheGame(event) {
+    //* Event listener
     if (event.keyCode === 32) {
       if (beganGame) return
       // console.log('game began')
       beganGame = true
+      //* create first record
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
+      //* Start Movement
+      setInterval(moveDrake, 200)
+      //* DOM Changes on game start
       document.querySelector('.instructions').style.display = 'none'
       document.querySelector('header').style.display = 'none'
       document.querySelector('.game-board').style.margin = '90px 0 5px 0'
@@ -54,139 +54,82 @@ function init() {
     }
   }
 
-  function handleMovements(event) {
+  function moving(event) {
     switch (event.keyCode) {
       case 68:
-        //* current direction
         direction = 'right'
-        //* listen for next direction
-        // nextDirection = event.keyCode
-        //* if current direction is right and nextDirection is left do nothing
-        // if (direction === 'right' && nextDirection === 'left')
-        clearInterval(movePlease)
-        movePlease = setInterval(() => {
-          const x = drakePosition % width
-          if (x < width - 1 && direction !== 'left') {
-            if (recordCount === 0) {
-              squares[drakePosition].classList.remove('drake')
-              squares[drakePosition].classList.remove('drake-left')
-              drakePosition++
-              squares[drakePosition].classList.add('drake')
-            } else {
-              drakeSnake.forEach(index => {
-                squares[index].classList.remove('drake')
-                squares[index].classList.remove('drake-left')
-                squares[index].classList.remove('drake1')
-              })
-              drakePosition++
-              drakeSnake.unshift(drakePosition)
-              drakeSnake.pop()
-              // console.log(drakeSnake)
-              drakeSnake.forEach(index => {
-                squares[index].classList.add('drake')
-              })
-            }
-          }
-          recordsCaught(drakePosition)
-          // console.log(drakePosition)
-          // console.log(drakePosition % width)
-        }, 300)
+        console.log('right')
         break
+
       case 65:
         direction = 'left'
-        clearInterval(movePlease)
-        movePlease = setInterval(() => {
-          const x = drakePosition % width
-          if (x > 0) {
-            if (recordCount === 0) {
-              squares[drakePosition].classList.remove('drake')
-              squares[drakePosition].classList.remove('drake-left')
-              drakePosition--
-              squares[drakePosition].classList.add('drake-left')
-            } else {
-              drakeSnake.forEach(index => {
-                squares[index].classList.remove('drake')
-                squares[index].classList.remove('drake-left')
-                squares[index].classList.remove('drake1')
-              })
-              squares[drakePosition].classList.remove('drake')
-              squares[drakePosition].classList.remove('drake-left')
-              drakePosition--
-              drakeSnake.unshift(drakePosition)
-              drakeSnake.pop()
-              squares[drakePosition].classList.add('drake-left')
-              drakeSnake.forEach(index => {
-                squares[index].classList.add('drake-left')
-              })
-              // console.log(drakeSnake)
-            }
-          }
-          recordsCaught(drakePosition)
-        }, 300)
+        console.log('left')
         break
+
       case 87:
         direction = 'up'
-        clearInterval(movePlease)
-        movePlease = setInterval(() => {
-          const y = Math.floor(drakePosition / width)
-          if (y > 0) {
-            if (recordCount === 0) {
-              squares[drakePosition].classList.remove('drake')
-              squares[drakePosition].classList.remove('drake-left')
-              drakePosition -= width
-              squares[drakePosition].classList.add('drake')
-            } else {
-              drakeSnake.forEach(index => {
-                squares[index].classList.remove('drake')
-                squares[index].classList.remove('drake-left')
-                squares[index].classList.remove('drake1')
-              })
-              drakePosition -= width
-              drakeSnake.unshift(drakePosition)
-              drakeSnake.pop()
-              drakeSnake.forEach(index => {
-                squares[index].classList.add('drake')
-              })
-              // console.log(drakeSnake)
-            }
-          }
-          recordsCaught(drakePosition)
-        }, 300)
+        console.log('up')
         break
+
       case 83:
         direction = 'down'
-        clearInterval(movePlease)
-        movePlease = setInterval(() => {
-          const y = Math.floor(drakePosition / width)
-          if (y < width - 1) {
-            if (recordCount === 0) {
-              squares[drakePosition].classList.remove('drake')
-              squares[drakePosition].classList.remove('drake-left')
-              drakePosition += width
-              squares[drakePosition].classList.add('drake')
-            } else {
-              drakeSnake.forEach(index => {
-                squares[index].classList.remove('drake')
-                squares[index].classList.remove('drake-left')
-                squares[index].classList.remove('drake1')
-              })
-              drakePosition += width
-              drakeSnake.unshift(drakePosition)
-              drakeSnake.pop()
-              drakeSnake.forEach(index => {
-                squares[index].classList.add('drake')
-              })
-              // console.log(drakeSnake)
-            }
-          }
-          recordsCaught(drakePosition)
-        }, 300)
+        console.log('down')
         break
-      default:
-        // console.log('invalid keys')
-        // } console.log(drakePosition)
-        squares[drakePosition].classList.add('drake')
     }
+
+  }
+
+  function moveDrake() {
+
+    //* Parameter Logic
+    const x = drakePosition % width
+    const y = Math.floor(drakePosition / width)
+
+    //* remove classes
+    squares[drakePosition].classList.remove('drake')
+    squares[drakePosition].classList.remove('drake-left')
+    drakeSnake.forEach(index => {
+      squares[index].classList.remove('drake')
+      squares[index].classList.remove('drake-left')
+    })
+
+    //* Conditional statements
+    if (direction === 'right') {
+      if (x < width - 1 && direction !== 'left') {
+        drakePosition++
+        drakeSnake.unshift(drakePosition)
+        drakeSnake.pop()
+        console.log(drakeSnake)
+      }
+    } else if (direction === 'left') {
+      if (x > 0) {
+        drakePosition--
+        drakeSnake.unshift(drakePosition)
+        drakeSnake.pop()
+        drakeSnake.forEach(index => {
+          squares[index].classList.add('drake-left')
+        })
+      }
+    } else if (direction === 'up') {
+      if (y > 0) {
+        drakePosition -= width
+        drakeSnake.unshift(drakePosition)
+        drakeSnake.pop()
+      }
+    } else if (direction === 'down') {
+      if (y < width - 1) {
+        drakePosition += width
+        drakeSnake.unshift(drakePosition)
+        drakeSnake.pop()
+      }
+    }
+    //* add classes back
+    squares[drakePosition].classList.add('drake')
+    drakeSnake.forEach(index => {
+      squares[index].classList.add('drake')
+    })
+    //* call the recordsCaught Function
+    recordsCaught(drakePosition)
   }
 
   function recordsCaught(drakePosition) {
@@ -271,7 +214,7 @@ function init() {
   createTheBoard(drakePosition)
 
 
-  document.addEventListener('keyup', handleMovements)
+  document.addEventListener('keyup', moving)
   document.addEventListener('keyup', playTheGame)
 
 
