@@ -2,8 +2,11 @@
   box-sizing: border-box;
 }
 
+body{
+  margin: 0;
+}
+
 #background{
-  margin: 0px;
   background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
   background-repeat: repeat;
   background-size: 200px;
@@ -14,7 +17,6 @@
 
 header{
   width: 70%;
-  margin: 0;
   text-align: center;
   background-color: white;
   border-top: 3px solid black;
@@ -26,34 +28,36 @@ header{
 
 .instructions{
   text-align: center;
-  padding: 0 140px;
+  padding: 0 140px 15px 140px;
 }
 
 h1{
   font-size: 50px;
   letter-spacing: 15px;
   font-family: 'Gloria Hallelujah', cursive;
-  margin-bottom: 0;
+  margin: 20px 0 10px 0;
 }
 
 main{
   width: 70%;
   background-color: white;
   border-bottom: 3px solid black;
+  padding-bottom: 10px;
 }
 
 .buttons{
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 }
+
+
 
 .btn{
   width: 60px;
 }
 
 .game-board{
-  height: 100vh;
+  height: 98vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,12 +67,24 @@ main{
 header, main{
   border-right: 3px solid black;
   border-left: 3px solid black;
+  margin: 0
 } 
 
 .score-tag, .score{
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
+  color: white;
+}
+
+.score-tag{
+  border: 2px solid white;
+  width: 115px;
+  padding: 8px 0 8px 8px;
+}
+
+.score{
+  color: white;
 }
 
 .grid {
@@ -79,7 +95,8 @@ header, main{
   justify-content: center;
   width: 700px;
   height: 700px;
-  background-image: url('../Pictures/d8f.jpg');
+  background-image: url('../Pictures/main-background.jpg');
+  background-size: cover;
 }
 
 .grid div.drake-change{

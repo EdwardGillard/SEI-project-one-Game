@@ -50,7 +50,8 @@ function init() {
       squares[recordPosition].classList.add('record')
       document.querySelector('.instructions').style.display = 'none'
       document.querySelector('header').style.display = 'none'
-      document.querySelector('.game-board').style.margin = '50px 0 5px 0'
+      document.querySelector('.game-board').style.margin = '90px 0 5px 0'
+      document.querySelector('main').style.backgroundColor = 'black'
     }
   }
 
@@ -137,7 +138,6 @@ function init() {
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       squares[recordPosition].classList.add('record')
       // growTheSnake(drakePosition)
-      // buildTheSnake(drakePosition, recordCount)
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       if (recordCount % 10 === 0) {
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
@@ -150,7 +150,7 @@ function init() {
         golden = setTimeout(() => {
           squares[goldenPosition].classList.remove('golden')
           backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
-          gameBoard.style.backgroundImage = 'url("Pictures/d8f.jpg")'
+          gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
         }, 10000)
       }
     }
@@ -159,7 +159,7 @@ function init() {
       scoreCount += 30
       clearTimeout(golden)
       backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
-      gameBoard.style.backgroundImage = 'url("Pictures/d8f.jpg")'
+      gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
       // console.log(`golden record score: ${scoreCount}`)
     }
   }
@@ -189,8 +189,6 @@ function init() {
   //     drakeSnake.length += width
   //     console.log('drake is going down')
   //   }
-
-
   // }
 
   // function collision() {
