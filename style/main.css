@@ -10,6 +10,7 @@ body{
   background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
   background-repeat: repeat;
   background-size: 200px;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -48,6 +49,12 @@ main{
 .buttons{
   display: flex;
   justify-content: center;
+}
+
+.hidden-display{
+  display: none;
+  background: black;
+
 }
 
 
