@@ -41,11 +41,6 @@ function init() {
     squares[startPosition].classList.add('drake')
   }
 
-  function difficulty(event) {
-
-    
-  }
-
   function playTheGame(event) {
     //* Event listener
     // console.log(event.target.value)
@@ -55,7 +50,6 @@ function init() {
     //* create first record
     recordPosition = Math.floor(Math.random() * numberOfSquares)
     squares[recordPosition].classList.add('record')
-    
     //* DOM Changes on game start
     document.querySelector('.instructions').style.display = 'none'
     document.querySelector('header').style.display = 'none'
