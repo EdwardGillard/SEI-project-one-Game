@@ -7,6 +7,10 @@ function init() {
   const squares = []
   const score = document.querySelector('.score')
   const backgroundChange = document.querySelector('#background')
+  // const buttonEasy = document.querySelector('#but-one')
+  // const buttonMed = document.querySelector('#but-two')
+  // const buttonHard = document.querySelector('#but-three')
+  const buttonsAll = document.querySelector('.difficulty-buttons')
 
   //* GridInfo
   const width = 10
@@ -18,6 +22,7 @@ function init() {
   let scoreCount = 0
   let beganGame = false
   let recordCount = 0
+  let golden
   let goldenPosition = 0
   let direction = 'right'
   let drakeSnake = []
@@ -58,7 +63,8 @@ function init() {
     switch (event.keyCode) {
       case 68:
         direction = 'right'
-        console.log('right')
+        direction ? 'right' : 'left'
+        // console.log('right')
         break
 
       case 65:
@@ -93,19 +99,20 @@ function init() {
       squares[index].classList.remove('drake-left')
     })
 
+    //* define array movement movements
+    drakeSnake.unshift(drakePosition)
+    drakeSnake.pop()
+
     //* Conditional statements
     if (direction === 'right') {
-      if (x < width - 1 && direction !== 'left') {
+      if (x < width - 1) {
         drakePosition++
-        drakeSnake.unshift(drakePosition)
-        drakeSnake.pop()
-        console.log(drakeSnake)
+        // console.log(drakeSnake)
       }
     } else if (direction === 'left') {
       if (x > 0) {
         drakePosition--
-        drakeSnake.unshift(drakePosition)
-        drakeSnake.pop()
+        squares[drakePosition].classList.add('drake-left')
         drakeSnake.forEach(index => {
           squares[index].classList.add('drake-left')
         })
@@ -113,14 +120,10 @@ function init() {
     } else if (direction === 'up') {
       if (y > 0) {
         drakePosition -= width
-        drakeSnake.unshift(drakePosition)
-        drakeSnake.pop()
       }
     } else if (direction === 'down') {
       if (y < width - 1) {
         drakePosition += width
-        drakeSnake.unshift(drakePosition)
-        drakeSnake.pop()
       }
     }
     //* add classes back
@@ -133,8 +136,10 @@ function init() {
   }
 
   function recordsCaught(drakePosition) {
+    //* Conditional statement for if record is caught.
     if (squares[drakePosition].classList.contains('record')) {
       squares[recordPosition].classList.remove('record')
+      //* Changes to game variables.
       recordCount++
       scoreCount += 10
       score.textContent = scoreCount
@@ -145,7 +150,6 @@ function init() {
         recordPosition = Math.floor(Math.random() * numberOfSquares)
       }
       squares[recordPosition].classList.add('record')
-
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       //* if recordCount is a multiple of 10...
       if (recordCount % 10 === 0) {
@@ -202,6 +206,18 @@ function init() {
     }
   }
 
+  function difficulty (event){
+    console.log(event.target.value)
+    if (event.target.value === 'hard'){
+      console.log('clicked hard')
+    } else if (event.target.value === 'medium'){
+      console.log('clicked Medium')
+    } else if (event.target.value === 'easy'){
+      console.log('clicked easy')
+    }
+
+  }
+
 
   // function collision() {
   //   //* create set of rules for if snake crashes
@@ -213,11 +229,9 @@ function init() {
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
 
-
+  buttonsAll.addEventListener('click', difficulty)
   document.addEventListener('keyup', moving)
   document.addEventListener('keyup', playTheGame)
-
-
 }
 
 window.addEventListener('DOMContentLoaded', init)
