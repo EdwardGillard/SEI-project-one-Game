@@ -23,7 +23,8 @@ function init() {
   let recordCount = 0
   let goldenPosition = 0
   let golden
-  let direction
+  let direction = 'right'
+  let nextDirection
   let drakeSnake = []
 
 
@@ -56,11 +57,16 @@ function init() {
   function handleMovements(event) {
     switch (event.keyCode) {
       case 68:
+        //* current direction
         direction = 'right'
+        //* listen for next direction
+        // nextDirection = event.keyCode
+        //* if current direction is right and nextDirection is left do nothing
+        // if (direction === 'right' && nextDirection === 'left')
         clearInterval(movePlease)
         movePlease = setInterval(() => {
           const x = drakePosition % width
-          if (x < width - 1) {
+          if (x < width - 1 && direction !== 'left') {
             if (recordCount === 0) {
               squares[drakePosition].classList.remove('drake')
               squares[drakePosition].classList.remove('drake-left')
@@ -82,7 +88,6 @@ function init() {
             }
           }
           recordsCaught(drakePosition)
-          collision()
           // console.log(drakePosition)
           // console.log(drakePosition % width)
         }, 300)
@@ -109,7 +114,7 @@ function init() {
               drakePosition--
               drakeSnake.unshift(drakePosition)
               drakeSnake.pop()
-              squares[drakePosition].classList.add('drake')
+              squares[drakePosition].classList.add('drake-left')
               drakeSnake.forEach(index => {
                 squares[index].classList.add('drake-left')
               })
@@ -117,7 +122,6 @@ function init() {
             }
           }
           recordsCaught(drakePosition)
-          collision()
         }, 300)
         break
       case 87:
@@ -147,7 +151,6 @@ function init() {
             }
           }
           recordsCaught(drakePosition)
-          collision()
         }, 300)
         break
       case 83:
@@ -177,9 +180,7 @@ function init() {
             }
           }
           recordsCaught(drakePosition)
-          collision()
         }, 300)
-
         break
       default:
         // console.log('invalid keys')
@@ -248,7 +249,7 @@ function init() {
       // console.log(drakePosition)
       // console.log(drakeSnake)
     } else if (direction === 'left') {
-      // drakeSnake.unshift(drakePosition)
+      drakeSnake.unshift(drakePosition)
     } else if (direction === 'up') {
       drakeSnake.unshift(drakePosition)
       // console.log('drake is going up')
@@ -259,12 +260,12 @@ function init() {
   }
 
 
-  function collision() {
-    //* create set of rules for if snake crashes
-    if (squares[drakeSnake[0]].classList.contains('drake')){
-      console.log('crashed')
-    }
-  }
+  // function collision() {
+  //   //* create set of rules for if snake crashes
+  //   // if (squares[drakePosition + 1].classList.contains('drake')){
+  //   //   console.log('crashed right')
+  //   // }
+  // }
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
