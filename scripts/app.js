@@ -165,22 +165,20 @@ function init() {
   }
 
   // function growTheSnake(drakePosition) {
-  //   // console.log(direction)
-  //   // console.log(recordCount)
-  //   // let newDrakeSnake = drakeSnake.push('drakeArray')
-  //   // console.log(drakeSnake.length)
+  //    console.log(direction)
+  //    console.log(recordCount)
+  //    let newDrakeSnake = drakeSnake.push('drakeArray')
+  //    console.log(drakeSnake.length)
   //   drakeSnake.push(drakePosition)
   //   if (direction === 'left') {
-  //     // squares[drakeArray.length + 1]
-  //     // console.log(drakeArray)
+  //     squares[drakeArray.length + 1]
+  //     console.log(drakeArray)
   //     console.log('drake is going left')
   //   } else if (direction === 'right') {
-  //     // drakeSnake.length--
   //     for (let i = 0; i < drakeSnake.length; i++) {
-  //       squares[drakeSnake - 1].classList.add('drake1')
-  //       squares[drakeSnake - 1].classList.remove('drake1')
-  //     }
-  //     console.log(drakeSnake.length)
+  //     squares[drakeSnake - 1].classList.add('drake1')
+  //     squares[drakeSnake - 1].classList.remove('drake1')
+  //     console.log(drakePosition.length)
   //     console.log('drake is going right')
   //   } else if (direction === 'up') {
   //     drakeSnake.length -= width
