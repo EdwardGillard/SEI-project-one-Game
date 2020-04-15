@@ -58,6 +58,7 @@ function init() {
     //* Event listener
     // console.log(event.target.value)
     if (beganGame) return
+    direction = 'right'
     // console.log('game began')
     beganGame = true
     //* create first record
@@ -335,12 +336,32 @@ function init() {
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#score-board').style.display = 'flex'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+    //* playing around with local storage
+    let localStorage = window.localStorage
+    let oldScore = localStorage.getItem(nameLog)
+    let oldName = localStorage.getItem(scoreThree)
+    let nameLogWindow = document.querySelector('#score-three-window')
+    let scoreThreeWindow = document.querySelector('#name-log-window')
+    localStorage.setItem('nameLog', 'Jeff')
+    localStorage.setItem('scoreThree', '3000')
+    nameLogWindow.textContent = oldName
+    scoreThreeWindow.textContent = oldScore
   }
 
   function addToScoreBoard(event){
-    console.log('clicked')
+    // console.log('clicked')
+    //* prevent refreshing on click
     event.preventDefault()
-    console.log(event.target.value)
+    //* Store name in a variable
+    const nameValue = document.querySelector('#name').value
+    console.log(nameValue)
+    //* Put that variable 
+    let nameLog = document.querySelector('#name-log')
+    let scoreThree = document.querySelector('#score-three')
+    nameLog.textContent = nameValue
+    scoreThree.textContent = scoreCount
+    
+    
   }
 
   //* CALLING CREATE BOARD FUNCTION
@@ -351,7 +372,7 @@ function init() {
   backToGame.addEventListener('click', backToTheGame)
   buttonsAll.addEventListener('click', playTheGame)
   document.addEventListener('keyup', moving)
-  addScore.addEventListener('click', addToScoreBoard)
+  addScore.addEventListener('submit', addToScoreBoard)
 }
 
 window.addEventListener('DOMContentLoaded', init)
