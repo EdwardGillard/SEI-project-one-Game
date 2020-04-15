@@ -2,11 +2,11 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   margin: 0;
 }
 
-#background{
+#background {
   background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
   background-repeat: repeat;
   background-size: 200px;
@@ -16,7 +16,69 @@ body{
   flex-direction: column;
 }
 
-header{
+#game-over {
+  display: none;
+  justify-content: center;
+  width: 100%;
+  background-color: black;
+}
+
+.second-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: red;
+  height: 100vh;
+  width: 80%;
+  text-align: center;
+}
+
+.game-over-header {
+  display: flex;
+  border: none;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 200px;
+  background-color: red;
+}
+
+.game-over-header h1 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  font-size: 30px;
+}
+
+.score-page-two {
+  color: black;
+  font-size: 70px;
+  font-weight: black;
+}
+
+.options {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.options button {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+}
+
+header {
   width: 70%;
   text-align: center;
   background-color: white;
@@ -27,43 +89,40 @@ header{
   flex-direction: column;
 }
 
-.instructions{
+.instructions {
   text-align: center;
   padding: 0 140px 15px 140px;
 }
 
-h1{
+h1 {
   font-size: 50px;
   letter-spacing: 15px;
   font-family: 'Gloria Hallelujah', cursive;
   margin: 20px 0 10px 0;
 }
 
-main{
+main {
   width: 70%;
   background-color: white;
   border-bottom: 3px solid black;
   padding-bottom: 10px;
 }
 
-.buttons{
+.buttons {
   display: flex;
   justify-content: center;
 }
 
-.hidden-display{
+.hidden-display {
   display: none;
   background: black;
-
 }
 
-
-
-.btn{
+.btn {
   width: 60px;
 }
 
-.game-board{
+.game-board {
   height: 98vh;
   display: flex;
   flex-direction: column;
@@ -71,26 +130,26 @@ main{
   justify-content: center;
 }
 
-header, main{
+header, main {
   border-right: 3px solid black;
   border-left: 3px solid black;
   margin: 0
-} 
+}
 
-.score-tag, .score{
+.score-tag, .score {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
   color: white;
 }
 
-.score-tag{
+.score-tag {
   border: 2px solid white;
   width: 115px;
   padding: 8px 0 8px 8px;
 }
 
-.score{
+.score {
   color: white;
 }
 
@@ -106,65 +165,64 @@ header, main{
   background-size: cover;
 }
 
-.grid div.drake-change{
+.grid div.drake-change {
   background-image: url('../Pictures/drake.png');
   background-repeat: repeat;
   background-size: contain;
 }
 
-.grid div{
+.grid div {
   /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
 }
 
-.grid div.drake{
+.grid div.drake {
   background-image: url('../Pictures/10054621_rs-214037-Screen-Shot-2015-10-23-at-11.10.18-AM.png');
   background-repeat: no-repeat;
   background-size: contain;
   border: none;
 }
 
-.grid div.drake-left{
+.grid div.drake-left {
   background-image: url('../Pictures/rs-214037-Screen-Shot-2015-10-23-at-11.10.18-AM.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.record{
+.grid div.record {
   background-image: url('../Pictures/download.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.golden{
+.grid div.golden {
   background-image: url('../Pictures/b3c8dd2bfaf113b7d29986a4b02d556e_royalty-free-gold-records-clip-art-vector-images-illustrations-_612-592.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.drake1{
+.grid div.drake1 {
   background-image: url('../Pictures/snake2.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.drake2{
+.grid div.drake2 {
   background-image: url('../Pictures/snake3.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.drake3{
+.grid div.drake3 {
   background-image: url('../Pictures/snake1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.drake4{
+.grid div.drake4 {
   background-image: url('../Pictures/snake4.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
-

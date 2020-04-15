@@ -6,11 +6,14 @@ function init() {
   const gameBoard = document.querySelector('.grid')
   const squares = []
   const score = document.querySelector('.score')
+  const scorePageTwo = document.querySelector('.score-page-two')
   const backgroundChange = document.querySelector('#background')
   const buttonsAll = document.querySelector('.difficulty-buttons')
   const audioYeah = document.querySelector('.yeah')
   const goldie = document.querySelector('.goldy')
   const alright = document.querySelector('.alright')
+  const startedFromTheBottomNowWeHere = document.querySelector('.now-we-here')
+  const backToGame = document.querySelector('#option-one')
 
   //* GridInfo
   const width = 10
@@ -45,6 +48,11 @@ function init() {
   }
 
   function playTheGame(event) {
+    //* pause previous audio
+    startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+    //* reset score
+    scoreCount = 0
+    recordCount = 0
     //* Event listener
     // console.log(event.target.value)
     if (beganGame) return
@@ -118,31 +126,27 @@ function init() {
     //* Conditional statements
     if (direction === 'right') {
       if (x === width - 1) {
-        console.log('you lost')
-        clearInterval(speedChanger)
+        loser()
         // console.log(drakeSnake)
       } else {
         drakePosition++
       }
     } else if (direction === 'left') {
       if (x === 0) {
-        console.log('you lost')
-        clearInterval(speedChanger)
+        loser()
       } else {
         drakePosition--
         squares[drakePosition].classList.add('drake-left')
       }
     } else if (direction === 'up') {
       if (y === 0) {
-        console.log('you lost')
-        clearInterval(speedChanger)
+        loser()
       } else {
         drakePosition -= width
       }
     } else if (direction === 'down') {
       if (y === width - 1) {
-        console.log('you lost')
-        clearInterval(speedChanger)
+        loser()
       } else {
         drakePosition += width
       }
@@ -204,10 +208,10 @@ function init() {
         }
         squares[goldenPosition].classList.add('golden')
         //* DOM changes for golden record timer
-        backgroundChange.style.backgroundImage = 'url("Pictures/backgroundchange.png")'
+        backgroundChange.style.backgroundImage = 'url("Pictures/giphy (1).gif")'
         backgroundChange.style.backgroundSize = '200px'
         backgroundChange.style.backgroundRepeat = 'repeat'
-        gameBoard.style.backgroundImage = 'url("Pictures/backgroundchange1.png")'
+        gameBoard.style.backgroundImage = 'url("Pictures/backgroundchanger.gif")'
         gameBoard.style.backgroundSize = 'cover'
         //* conditions for timeout
         if (difficulty === 'hard') {
@@ -278,32 +282,43 @@ function init() {
   function collision() {
     //* create set of rules for if snake crashes
     if (squares[drakePosition].classList.contains('drake1') || squares[drakePosition].classList.contains('drake2') || squares[drakePosition].classList.contains('drake3')) {
-      console.log('game over')
-      clearInterval(speedChanger)
-      drakePosition = 0
-      drakeSnake = []
-      drakeSnake.forEach(index => {
-        squares[index].classList.remove('drake1')
-        squares[index].classList.remove('drake2')
-        squares[index].classList.remove('drake3')
-
-      })
-      squares[recordPosition].classList.remove('record')
-      squares[goldenPosition].classList.remove('golden')
-      squares[drakePosition].classList.remove('drake')
-      squares[drakePosition].classList.remove('drake-left')
-      beganGame = false
-      document.querySelector('.instructions').style.display = 'flex'
-      document.querySelector('header').style.display = 'flex'
-      document.querySelector('main').style.backgroundColor = 'white'
-      document.querySelector('.game-board').style.margin = '0'
-      createTheBoard(drakePosition)
+      loser()
     }
+  }
+
+  function loser() {
+    //* console log & audio clips
+    console.log('game over')
+    goldie.pause('sounds/hotline-bling.mp3')
+    startedFromTheBottomNowWeHere.play('sounds/started-from-the-bottom.wav')
+    //* clear up loose ends
+    clearInterval(speedChanger)
+    squares[recordPosition].classList.remove('record')
+    squares[goldenPosition].classList.remove('golden')
+    squares[drakePosition].classList.remove('drake')
+    squares[drakePosition].classList.remove('drake-left')
+    drakeSnake.forEach(index => {
+      squares[index].classList.remove('drake1')
+      squares[index].classList.remove('drake2')
+      squares[index].classList.remove('drake3')
+    })
+    drakeSnake = []
+    drakePosition = 0
+    beganGame = false
+    //* events
+    scorePageTwo.textContent = scoreCount
+    document.querySelector('#background').style.display = 'none'
+    document.querySelector('#game-over').style.display = 'flex'
+  }
+
+  function backToTheGame(event){
+    console.log('clicked')
   }
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
 
+  backToGame.addEventListener('click', backToTheGame)
   buttonsAll.addEventListener('click', playTheGame)
   document.addEventListener('keyup', moving)
 }

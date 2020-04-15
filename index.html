@@ -8,13 +8,10 @@
   <link rel="stylesheet" href="style/main.css">
   <script src="scripts/app.js" charset="utf-8"></script>
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="hidden-display">
-    <h1><strong>YOU LOST!</strong></h1>
-    <button>Play Again?</button>
-  </div>
   <div id="background">
     <header>
       <h1>Drake</h1>
@@ -33,9 +30,28 @@
         <audio src="sounds/drake_4.mp3" class="yeah"></audio>
         <audio src="sounds/drake_5.mp3" class="alright"></audio>
         <audio src="sounds/hotline-bling.mp3" class="goldy"></audio>
+        <audio src="sounds/started-from-the-bottom.wav" class="now-we-here"></audio>
         <p class="score-tag">Score: <span class="score"></span></p>
       </div>
     </main>
+  </div>
+  <div id="game-over">
+    <div class="second-main">
+      <header class="game-over-header">
+        <img src="Pictures/sadDrake1.png" alt="Sad Drake" height="200px" width="200px">
+        <h1><strong> Game over </strong></h1>
+        <img src="Pictures/sadDrake2.png" alt="Sad Drake" height="200px" width="200px">
+      </header>
+      <div class="scores">
+        <h2>Started from the bottom now you're here... </h2>
+        <p><span class="score-page-two"></span></p>
+      </div>
+      <div class="options">
+        <button id="option-one"> Play again?</button>
+        <button id="option-two"> Score Board </button>
+      </div>
+    </div>
+
   </div>
 </body>
 
