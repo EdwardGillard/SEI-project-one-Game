@@ -17,6 +17,7 @@ function init() {
   const NavToScoreBoard = document.querySelector('#option-two')
   const addScore = document.querySelector('form')
   const returnToMp = document.querySelector('.return-mainpage')
+  const buttonsForMediaQ = document.querySelector('.move-buttons')
 
   //* GridInfo
   const width = 10
@@ -327,7 +328,6 @@ function init() {
     //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
-    document.querySelector('.instructions').style.display = 'flex'
     document.querySelector('header').style.display = 'flex'
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
@@ -370,11 +370,15 @@ function init() {
   function returnToMain() {
     document.querySelector('#score-board').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
-    document.querySelector('.instructions').style.display = 'flex'
     document.querySelector('header').style.display = 'flex'
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
   }
+
+  function buttonsForMedia(event) {
+    console.log(event.target)
+  }
+
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
@@ -386,6 +390,7 @@ function init() {
   document.addEventListener('keyup', moving)
   addScore.addEventListener('submit', addToScoreBoard)
   returnToMp.addEventListener('click', returnToMain)
+  buttonsForMediaQ.addEventListener('click', buttonsForMedia)
 }
 
 window.addEventListener('DOMContentLoaded', init)

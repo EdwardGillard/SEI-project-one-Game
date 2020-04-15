@@ -191,6 +191,10 @@ h1 {
   color: white;
 }
 
+.game-over-header img {
+  box-shadow: 0 5px 5px grey;
+}
+
 /* Page Three- Score Board */
 
 .scoreboard-entry {
@@ -204,6 +208,22 @@ h3 {
   border: 2px solid black;
   padding: 30px;
   margin: 0;
+}
+
+input {
+  height: 50px;
+  font-size: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+#scoreboard-submit {
+  color: white;
+  background-color: black;
 }
 
 .highscore {
@@ -240,6 +260,7 @@ h3 {
 .score-board-header img {
   height: 200px;
   width: 200px;
+  box-shadow: 0 5px 5px grey;
 }
 
 .scores {
@@ -331,37 +352,59 @@ h3 {
 /* Media */
 
 @media only screen and (max-width: 1000px) {
+  /* Page One */
   .grid {
     width: 600px;
     height: 600px;
+    margin-top: -40px;
+  }
+  .game-board {
+    margin-top: -25px;
   }
   #background header {
     display: none;
   }
   .instructions {
     font-size: 12px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  /* Page Two */
+  .second-main {
+    width: 100%;
+    margin: 0
+  }
+  /* Page three */
+  .third-main {
+    width: 100%;
     margin-top: 0;
   }
 }
 
 @media only screen and (max-width: 860px) {
+  /* Page One */
   .grid {
     width: 500px;
     height: 500px;
     margin-top: -100px;
   }
+  .game-board {
+    margin-top: -50px;
+  }
   .instructions {
     margin-top: 40px;
   }
+  /* Page Two */
 }
 
 @media only screen and (max-width: 720px) {
+  /* Page One */
   main {
     width: 100%;
     margin-top: 300px;
   }
-  body {
-    margin: 0;
+  header {
+    width: 100%;
   }
   main {
     margin: 0;
@@ -374,7 +417,7 @@ h3 {
     background-color: white;
   }
   .grid {
-    margin-top: -120px;
+    margin-top: -20px;
   }
   .instructions {
     display: none;
@@ -391,29 +434,68 @@ h3 {
     width: 100%;
     justify-content: space-evenly;
   }
-  .move-buttons{
+  .move-buttons {
     width: 20%;
     font-size: 50px;
     padding: 30px 0 30px 0;
   }
-}
-
-@media only screen and (max-width: 550px){
-.grid{
-  width: 450px;
-  height: 450px;
-}
-
-.move-buttons{
-  width: 20%;
-  font-size: 50px;
-  padding: 20px 0 20px 0;
-  margin-top: -50px;
-}
-
-@media only screen and (max-width: 450px){
-  .grid{
-    width: 350px;
-    height: 350px;
+  /* Page Two */
+  .game-over-header h1 {
+    font-size: 30px;
   }
+  .third-main h1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  /* Page One */
+  .grid {
+    width: 450px;
+    height: 450px;
+    margin-top: -200px;
+  }
+  .game-board {
+    margin-top: 50px;
+  }
+  .move-buttons {
+    width: 20%;
+    font-size: 50px;
+    padding: 20px 0 20px 0;
+  }
+  /* Page Two */
+  .second-main {
+    background-color: red;
+  }
+  .game-over-header {
+    background-color: black;
+    color: red;
+  }
+  .game-over-header img {
+    display: none;
+  }
+  h2 {
+    margin-top: -50px;
+    font-size: 30px;
+  }
+  .options button {
+    color: red;
+    border: 2px solid red;
+  }
+  /* Page three */
+  .score-board-header img {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  /* Page One */
+  .grid {
+    width: 320px;
+    height: 320px;
+  }
+  .game-board {
+    margin-top: -50px;
+  }
+  /* Page Two */
 }
