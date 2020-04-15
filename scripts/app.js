@@ -21,9 +21,12 @@ function init() {
   let recordCount = 0
   let golden
   let speedChanger
+  let speed
   let goldenPosition = 0
   let direction = 'right'
   let drakeSnake = []
+  let difficulty
+  let timer
 
 
   //* functions
@@ -50,19 +53,19 @@ function init() {
     //* DOM Changes on game start
     document.querySelector('.instructions').style.display = 'none'
     document.querySelector('header').style.display = 'none'
-    document.querySelector('.game-board').style.margin = '90px 0 5px 0'
+    document.querySelector('.game-board').style.margin = '40px 0 5px 0'
     document.querySelector('main').style.backgroundColor = 'black'
     //* Start Movement
+    difficulty = event.target.value
     if (event.target.value === 'hard') {
-      console.log('clicked hard')
-      speedChanger = setInterval(moveDrake, 200)
+      speed = 200
     } else if (event.target.value === 'medium') {
-      console.log('clicked Medium')
-      speedChanger = setInterval(moveDrake, 700)
+      speed = 500
     } else if (event.target.value === 'easy') {
-      console.log('clicked easy')
-      speedChanger = setInterval(moveDrake, 1000)
+      speed = 700
     }
+    speedChanger = setInterval(moveDrake, speed)
+    console.log(speed)
   }
 
 
@@ -76,17 +79,17 @@ function init() {
 
       case 65:
         direction = 'left'
-        console.log('left')
+        // console.log('left')
         break
 
       case 87:
         direction = 'up'
-        console.log('up')
+        // console.log('up')
         break
 
       case 83:
         direction = 'down'
-        console.log('down')
+        // console.log('down')
         break
     }
   }
@@ -152,8 +155,13 @@ function init() {
       squares[recordPosition].classList.remove('record')
       //* Changes to game variables.
       recordCount++
-      scoreCount += 10
-      score.textContent = scoreCount
+      if (difficulty === 'hard'){
+        scoreCount += 50
+      } else if (difficulty === 'medium'){
+        scoreCount += 30
+      } else if (difficulty === 'easy'){
+        scoreCount += 10
+      }
       //* Randomised record position.
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       //* Preventing randomised record position from clashing with drakePosition or drakeSnake.
@@ -177,24 +185,46 @@ function init() {
         backgroundChange.style.backgroundRepeat = 'repeat'
         gameBoard.style.backgroundImage = 'url("Pictures/backgroundchange1.png")'
         gameBoard.style.backgroundSize = 'cover'
+        //* conditions for timeout
+        if (difficulty === 'hard'){
+          timer = 5000
+        } else if (difficulty === 'medium'){
+          timer = 8000
+        } else if (difficulty === 'easy'){
+          timer = 11000
+        }
         //* time out for golden record
         golden = setTimeout(() => {
           squares[goldenPosition].classList.remove('golden')
           backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
           gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
-        }, 10000)
+        }, timer)
       }
       growTheSnake()
     }
+    //* conditions for if drake catches the golden record. Speed up and score differences.
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
-      scoreCount += 30
+      if (difficulty === 'hard'){
+        scoreCount += 100
+        speed -= 10
+        console.log(speed)
+      } else if (difficulty === 'medium'){
+        scoreCount += 60
+        speed -= 20
+        console.log(speed)
+      } else if (difficulty === 'easy'){
+        scoreCount += 20
+        speed -= 30
+        console.log(speed)
+      }
       recordCount++
       clearTimeout(golden)
       backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
       gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
       // console.log(`golden record score: ${scoreCount}`)
     }
+    score.textContent = scoreCount
   }
 
   function growTheSnake() {
