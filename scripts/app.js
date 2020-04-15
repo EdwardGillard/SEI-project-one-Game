@@ -15,6 +15,7 @@ function init() {
   const startedFromTheBottomNowWeHere = document.querySelector('.now-we-here')
   const backToGame = document.querySelector('#option-one')
   const NavToScoreBoard = document.querySelector('#option-two')
+  const addScore = document.querySelector('form')
 
   //* GridInfo
   const width = 10
@@ -127,6 +128,7 @@ function init() {
     //* Conditional statements
     if (direction === 'right') {
       if (x === width - 1) {
+        console.log('problem in right')
         loser()
         // console.log(drakeSnake)
       } else {
@@ -134,6 +136,7 @@ function init() {
       }
     } else if (direction === 'left') {
       if (x === 0) {
+        console.log('problem in left')
         loser()
       } else {
         drakePosition--
@@ -141,12 +144,14 @@ function init() {
       }
     } else if (direction === 'up') {
       if (y === 0) {
+        console.log('problem in up')
         loser()
       } else {
         drakePosition -= width
       }
     } else if (direction === 'down') {
       if (y === width - 1) {
+        console.log('problem in down')
         loser()
       } else {
         drakePosition += width
@@ -283,13 +288,14 @@ function init() {
   function collision() {
     //* create set of rules for if snake crashes
     if (squares[drakePosition].classList.contains('drake1') || squares[drakePosition].classList.contains('drake2') || squares[drakePosition].classList.contains('drake3')) {
+      console.log('problem in the collision')
       loser()
     }
   }
 
   function loser() {
     //* console log & audio clips
-    console.log('game over')
+    // console.log('game over')
     goldie.pause('sounds/hotline-bling.mp3')
     startedFromTheBottomNowWeHere.play('sounds/started-from-the-bottom.wav')
     //* clear up loose ends
@@ -314,6 +320,7 @@ function init() {
 
   function backToTheGame() {
     // console.log('clicked')
+    //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
     document.querySelector('.instructions').style.display = 'flex'
@@ -321,16 +328,30 @@ function init() {
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+  }
 
+  function NavToScore(){
+    //* DOM manipulations
+    document.querySelector('#game-over').style.display = 'none'
+    document.querySelector('#score-board').style.display = 'flex'
+    startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+  }
 
+  function addToScoreBoard(event){
+    console.log('clicked')
+    event.preventDefault()
+    console.log(event.target.value)
   }
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
 
+  //* Event Listeners
+  NavToScoreBoard.addEventListener('click', NavToScore)
   backToGame.addEventListener('click', backToTheGame)
   buttonsAll.addEventListener('click', playTheGame)
   document.addEventListener('keyup', moving)
+  addScore.addEventListener('click', addToScoreBoard)
 }
 
 window.addEventListener('DOMContentLoaded', init)
