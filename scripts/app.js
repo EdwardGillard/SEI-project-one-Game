@@ -8,6 +8,9 @@ function init() {
   const score = document.querySelector('.score')
   const backgroundChange = document.querySelector('#background')
   const buttonsAll = document.querySelector('.difficulty-buttons')
+  const audioYeah = document.querySelector('.yeah')
+  const goldie = document.querySelector('.goldy')
+  const alright = document.querySelector('.alright')
 
   //* GridInfo
   const width = 10
@@ -164,6 +167,14 @@ function init() {
     //* Conditional statement for if record is caught.
     if (squares[drakePosition].classList.contains('record')) {
       squares[recordPosition].classList.remove('record')
+      //* audio clip
+      if (recordCount % 2 === 0) {
+        audioYeah.play('/sounds/drake_4.mp3')
+      } else if (recordCount % 3 === 0) {
+        alright.play('sounds/drake_5.mp3')
+      } else {
+        alright.play('sounds/drake_5.mp3')
+      }
       //* Changes to game variables.
       recordCount++
       if (difficulty === 'hard') {
@@ -183,6 +194,8 @@ function init() {
       // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       //* if recordCount is a multiple of 10...
       if (recordCount % 10 === 0) {
+        //* Hotline Bling
+        goldie.play('sounds/hotline-bling.mp3')
         //* produce a random position for golden record
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         //* to prevent golden label from clashing with any other classes
@@ -206,6 +219,7 @@ function init() {
         }
         //* time out for golden record
         golden = setTimeout(() => {
+          goldie.pause('sounds/hotline-bling.mp3')
           squares[goldenPosition].classList.remove('golden')
           backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
           gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
@@ -216,6 +230,7 @@ function init() {
     //* conditions for if drake catches the golden record. Speed up and score differences.
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
+      goldie.pause('sounds/hotline-bling.mp3')
       if (difficulty === 'hard') {
         scoreCount += 100
         speed -= 20
