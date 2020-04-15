@@ -17,7 +17,7 @@ function init() {
   const NavToScoreBoard = document.querySelector('#option-two')
   const addScore = document.querySelector('form')
   const returnToMp = document.querySelector('.return-mainpage')
-  const buttonsForMediaQ = document.querySelector('.move-buttons')
+  const buttonsForMediaQ = document.querySelector('.movement-buttons')
 
   //* GridInfo
   const width = 10
@@ -376,7 +376,28 @@ function init() {
   }
 
   function buttonsForMedia(event) {
-    console.log(event.target)
+    // console.log(event.target.value)
+    switch (event.target.value) {
+      case 'right':
+        direction = direction === 'left' ? 'left' : 'right'
+        console.log('direction right')
+        break
+
+      case 'left':
+        direction = direction === 'right' ? 'right' : 'left'
+        console.log('direction left')
+        break
+
+      case 'up':
+        direction = direction === 'down' ? 'down' : 'up'
+        console.log('direction up')
+        break
+
+      case 'down':
+        direction = direction === 'up' ? 'up' : 'down'
+        console.log('direction down')
+        break
+    }
   }
 
 
