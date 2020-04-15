@@ -72,23 +72,22 @@ function init() {
   function moving(event) {
     switch (event.keyCode) {
       case 68:
-        direction = 'right'
-        direction ? 'right' : 'left'
+        direction = direction === 'left' ? 'left' : 'right'
         // console.log('right')
         break
 
       case 65:
-        direction = 'left'
+        direction = direction === 'right' ? 'right' : 'left'
         // console.log('left')
         break
 
       case 87:
-        direction = 'up'
+        direction = direction === 'down' ? 'down' : 'up'
         // console.log('up')
         break
 
       case 83:
-        direction = 'down'
+        direction = direction === 'up' ? 'up' : 'down'
         // console.log('down')
         break
     }
@@ -115,21 +114,33 @@ function init() {
 
     //* Conditional statements
     if (direction === 'right') {
-      if (x < width - 1) {
-        drakePosition++
+      if (x === width - 1) {
+        console.log('you lost')
+        clearInterval(speedChanger)
         // console.log(drakeSnake)
+      } else {
+        drakePosition++
       }
     } else if (direction === 'left') {
-      if (x > 0) {
+      if (x === 0) {
+        console.log('you lost')
+        clearInterval(speedChanger)
+      } else {
         drakePosition--
         squares[drakePosition].classList.add('drake-left')
       }
     } else if (direction === 'up') {
-      if (y > 0) {
+      if (y === 0) {
+        console.log('you lost')
+        clearInterval(speedChanger)
+      } else {
         drakePosition -= width
       }
     } else if (direction === 'down') {
-      if (y < width - 1) {
+      if (y === width - 1) {
+        console.log('you lost')
+        clearInterval(speedChanger)
+      } else {
         drakePosition += width
       }
     }
@@ -155,11 +166,11 @@ function init() {
       squares[recordPosition].classList.remove('record')
       //* Changes to game variables.
       recordCount++
-      if (difficulty === 'hard'){
+      if (difficulty === 'hard') {
         scoreCount += 50
-      } else if (difficulty === 'medium'){
+      } else if (difficulty === 'medium') {
         scoreCount += 30
-      } else if (difficulty === 'easy'){
+      } else if (difficulty === 'easy') {
         scoreCount += 10
       }
       //* Randomised record position.
@@ -186,11 +197,11 @@ function init() {
         gameBoard.style.backgroundImage = 'url("Pictures/backgroundchange1.png")'
         gameBoard.style.backgroundSize = 'cover'
         //* conditions for timeout
-        if (difficulty === 'hard'){
+        if (difficulty === 'hard') {
           timer = 5000
-        } else if (difficulty === 'medium'){
+        } else if (difficulty === 'medium') {
           timer = 8000
-        } else if (difficulty === 'easy'){
+        } else if (difficulty === 'easy') {
           timer = 11000
         }
         //* time out for golden record
@@ -205,15 +216,15 @@ function init() {
     //* conditions for if drake catches the golden record. Speed up and score differences.
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
-      if (difficulty === 'hard'){
+      if (difficulty === 'hard') {
         scoreCount += 100
-        speed -= 10
-        console.log(speed)
-      } else if (difficulty === 'medium'){
-        scoreCount += 60
         speed -= 20
         console.log(speed)
-      } else if (difficulty === 'easy'){
+      } else if (difficulty === 'medium') {
+        scoreCount += 60
+        speed -= 25
+        console.log(speed)
+      } else if (difficulty === 'easy') {
         scoreCount += 20
         speed -= 30
         console.log(speed)
@@ -224,6 +235,7 @@ function init() {
       gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
       // console.log(`golden record score: ${scoreCount}`)
     }
+    //* display score changes for records & golden records
     score.textContent = scoreCount
   }
 
