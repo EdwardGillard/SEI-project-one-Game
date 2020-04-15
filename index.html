@@ -15,16 +15,19 @@
   <div id="background">
     <header>
       <h1>Drake</h1>
-      <div class="difficulty-buttons">
-        <button id="but-one" value="easy">Easy</button>
-        <button id="but-two" value="medium">Medium</button>
-        <button id="but-three" value="hard">Hard</button>
-      </div>
     </header>
     <main>
       <p class="instructions"><strong> Instructions: Help Drake collect records to gain popularity using the 'W' 'A' 'S'
           'D' keys. Please select a difficulty to begin. Look out for the golden records worth extra points! </strong>
       </p>
+      <div class= "hidden-instructions">
+        <p>Pick a difficulty to begin</p>
+      </div>
+      <div class="difficulty-buttons">
+        <button id="but-one" value="easy">Easy</button>
+        <button id="but-two" value="medium">Medium</button>
+        <button id="but-three" value="hard">Hard</button>
+      </div>
       <div class="game-board">
         <div class="grid"></div>
         <audio src="sounds/drake_4.mp3" class="yeah"></audio>
@@ -32,6 +35,12 @@
         <audio src="sounds/hotline-bling.mp3" class="goldy"></audio>
         <audio src="sounds/started-from-the-bottom.wav" class="now-we-here"></audio>
         <p class="score-tag">Score: <span class="score"></span></p>
+        <div class="movement-buttons">
+          <button class="move-buttons" value="left">←</button>
+          <button class="move-buttons" value="up">↑</button>
+          <button class="move-buttons" value="right">→</button>
+          <button class="move-buttons" value="down">↓</button>
+        </div>
       </div>
     </main>
   </div>
@@ -53,18 +62,29 @@
     </div>
   </div>
   <div id="score-board">
-    <div>
-      <form>
+    <div class="third-main">
+      <header class="score-board-header">
+        <img class="drake-score-left" src="Pictures/scoreboard-one.jpg" alt="drake"/>
         <h1> Score Board</h1>
+        <img class="drake-score-right" src="Pictures/scoreboardOneflipped.jpg" alt="drake"/>
+      </header>
+      <form>
         <input type="text" id="name" placeholder="Your name here" />
         <input id="scoreboard-submit" type="submit" />
       </form>
-      <div class= "scoreboard-entry">
-        <p> Name: <span id="name-log"></span></p>
-        <p> Score: <span id="score-three"></span></p>
-        <p> Name: <span id="name-log-window"></span></p>
-        <p> Score: <span id="score-three-window"></span></p>
+      <div class="scoreboard-entry">
+        <div class="highscore">
+          <h3>Highscore:</h3>
+          <p> Name: <span id="name-log-window"></span></p>
+          <p> Score: <span id="score-three-window"></span></p>
+        </div>
+        <div class="your-score">
+          <h3>Your Score</h3>
+          <p> Name: <span id="name-log"></span></p>
+          <p> Score: <span id="score-three"></span></p>
+        </div>
       </div>
+      <button class="return-mainpage">Return to Game</button>
     </div>
 
   </div>

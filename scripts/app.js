@@ -16,6 +16,7 @@ function init() {
   const backToGame = document.querySelector('#option-one')
   const NavToScoreBoard = document.querySelector('#option-two')
   const addScore = document.querySelector('form')
+  const returnToMp = document.querySelector('.return-mainpage')
 
   //* GridInfo
   const width = 10
@@ -79,7 +80,7 @@ function init() {
       speed = 700
     }
     speedChanger = setInterval(moveDrake, speed)
-    console.log(speed)
+    // console.log(speed)
   }
 
 
@@ -129,7 +130,7 @@ function init() {
     //* Conditional statements
     if (direction === 'right') {
       if (x === width - 1) {
-        console.log('problem in right')
+        // console.log('problem in right')
         loser()
         // console.log(drakeSnake)
       } else {
@@ -137,7 +138,7 @@ function init() {
       }
     } else if (direction === 'left') {
       if (x === 0) {
-        console.log('problem in left')
+        // console.log('problem in left')
         loser()
       } else {
         drakePosition--
@@ -145,14 +146,14 @@ function init() {
       }
     } else if (direction === 'up') {
       if (y === 0) {
-        console.log('problem in up')
+        // console.log('problem in up')
         loser()
       } else {
         drakePosition -= width
       }
     } else if (direction === 'down') {
       if (y === width - 1) {
-        console.log('problem in down')
+        // console.log('problem in down')
         loser()
       } else {
         drakePosition += width
@@ -206,6 +207,7 @@ function init() {
       //* if recordCount is a multiple of 10...
       if (recordCount % 10 === 0) {
         //* Hotline Bling
+        goldie.load('sounds/hotline-bling.mp3')
         goldie.play('sounds/hotline-bling.mp3')
         //* produce a random position for golden record
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
@@ -245,15 +247,15 @@ function init() {
       if (difficulty === 'hard') {
         scoreCount += 100
         speed -= 20
-        console.log(speed)
+        // console.log(speed)
       } else if (difficulty === 'medium') {
         scoreCount += 60
         speed -= 25
-        console.log(speed)
+        // console.log(speed)
       } else if (difficulty === 'easy') {
         scoreCount += 20
         speed -= 30
-        console.log(speed)
+        // console.log(speed)
       }
       recordCount++
       clearTimeout(golden)
@@ -289,7 +291,7 @@ function init() {
   function collision() {
     //* create set of rules for if snake crashes
     if (squares[drakePosition].classList.contains('drake1') || squares[drakePosition].classList.contains('drake2') || squares[drakePosition].classList.contains('drake3')) {
-      console.log('problem in the collision')
+      // console.log('problem in the collision')
       loser()
     }
   }
@@ -298,6 +300,7 @@ function init() {
     //* console log & audio clips
     // console.log('game over')
     goldie.pause('sounds/hotline-bling.mp3')
+    startedFromTheBottomNowWeHere.load('sounds/started-from-the-bottom.wav')
     startedFromTheBottomNowWeHere.play('sounds/started-from-the-bottom.wav')
     //* clear up loose ends
     clearInterval(speedChanger)
@@ -331,24 +334,26 @@ function init() {
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
   }
 
-  function NavToScore(){
+  function NavToScore() {
     //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#score-board').style.display = 'flex'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
     //* playing around with local storage
     let localStorage = window.localStorage
-    let oldScore = localStorage.getItem(nameLog)
-    let oldName = localStorage.getItem(scoreThree)
     let nameLogWindow = document.querySelector('#score-three-window')
     let scoreThreeWindow = document.querySelector('#name-log-window')
-    localStorage.setItem('nameLog', 'Jeff')
+    localStorage.setItem('nameLog', 'Aubrey Graham')
     localStorage.setItem('scoreThree', '3000')
+    let oldScore = localStorage.getItem('nameLog')
+    let oldName = localStorage.getItem('scoreThree')
     nameLogWindow.textContent = oldName
     scoreThreeWindow.textContent = oldScore
+    console.log(oldScore)
+    console.log(oldName)
   }
 
-  function addToScoreBoard(event){
+  function addToScoreBoard(event) {
     // console.log('clicked')
     //* prevent refreshing on click
     event.preventDefault()
@@ -360,8 +365,15 @@ function init() {
     let scoreThree = document.querySelector('#score-three')
     nameLog.textContent = nameValue
     scoreThree.textContent = scoreCount
-    
-    
+  }
+
+  function returnToMain() {
+    document.querySelector('#score-board').style.display = 'none'
+    document.querySelector('#background').style.display = 'flex'
+    document.querySelector('.instructions').style.display = 'flex'
+    document.querySelector('header').style.display = 'flex'
+    document.querySelector('.game-board').style.margin = '0'
+    document.querySelector('main').style.backgroundColor = 'white'
   }
 
   //* CALLING CREATE BOARD FUNCTION
@@ -373,6 +385,7 @@ function init() {
   buttonsAll.addEventListener('click', playTheGame)
   document.addEventListener('keyup', moving)
   addScore.addEventListener('submit', addToScoreBoard)
+  returnToMp.addEventListener('click', returnToMain)
 }
 
 window.addEventListener('DOMContentLoaded', init)

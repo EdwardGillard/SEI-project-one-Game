@@ -6,12 +6,14 @@ body {
   margin: 0;
 }
 
+/* Main Pages Background CSS */
+
 #background {
   background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
   background-repeat: repeat;
   background-size: 200px;
   width: 100%;
-  display: none;
+  display: flex;
   align-items: center;
   flex-direction: column;
 }
@@ -20,29 +22,67 @@ body {
   display: none;
   justify-content: center;
   width: 100%;
-  background-color: black;
+  background-image: url('../Pictures/backgroundchange.png');
+  background-repeat: repeat;
+  background-size: 200px;
 }
 
 #score-board {
-  display: flex;
+  display: none;
+  width: 100%;
   flex-direction: column;
   align-items: center;
+  background-image: url('../Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png');
+  background-repeat: repeat;
+  background-size: 200px;
 }
 
-.scoreboard-entry{
-  display: flex;
-  justify-content: space-evenly;
+/* Main Pages Main Content CSS */
+
+main {
+  width: 70%;
+  background-color: white;
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
 }
 
 .second-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  background-color: red;
+  justify-content: space-around;
+  background-color: white;
   height: 100vh;
-  width: 80%;
+  width: 70%;
   text-align: center;
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.third-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+  height: 100vh;
+  width: 70%;
+  text-align: center;
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+/* Headers */
+
+header {
+  width: 70%;
+  text-align: center;
+  background-color: white;
+  border-top: 3px solid black;
+  height: 155px;
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-over-header {
@@ -53,20 +93,82 @@ body {
   justify-content: space-evenly;
   align-items: center;
   height: 200px;
-  background-color: red;
+  margin-top: 0;
 }
+
+.score-board-header {
+  display: flex;
+  border: none;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 200px;
+}
+
+/* Main Page- The Gane */
+
+.movement-buttons {
+  display: none;
+}
+
+header, main {
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+  margin: 0
+}
+
+h1 {
+  font-size: 50px;
+  letter-spacing: 15px;
+  font-family: 'Gloria Hallelujah', cursive;
+  margin: 20px 0 10px 0;
+}
+
+.hidden-instructions {
+  display: none;
+  text-align: center;
+}
+
+.difficulty-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  text-align: center;
+  padding: 0 140px 15px 140px;
+}
+
+.game-board {
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-tag, .score {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: white;
+}
+
+.score-tag {
+  border: 2px solid white;
+  width: 115px;
+  padding: 8px 0 8px 8px;
+}
+
+.score {
+  color: white;
+}
+
+/* Page 2- Game Over  */
 
 .game-over-header h1 {
   font-family: 'Press Start 2P', cursive;
-}
-
-.scores {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 85%;
-  font-size: 30px;
 }
 
 .score-page-two {
@@ -89,75 +191,75 @@ body {
   color: white;
 }
 
-header {
-  width: 70%;
-  text-align: center;
-  background-color: white;
-  border-top: 3px solid black;
-  height: 155px;
-  margin-top: -50px;
+/* Page Three- Score Board */
+
+.scoreboard-entry {
   display: flex;
-  flex-direction: column;
-}
-
-.instructions {
-  text-align: center;
-  padding: 0 140px 15px 140px;
-}
-
-h1 {
-  font-size: 50px;
-  letter-spacing: 15px;
-  font-family: 'Gloria Hallelujah', cursive;
-  margin: 20px 0 10px 0;
-}
-
-main {
-  width: 70%;
-  background-color: white;
-  border-bottom: 3px solid black;
-  padding-bottom: 10px;
-}
-
-.buttons {
-  display: flex;
+  flex-direction: row;
   justify-content: center;
+  margin-top: 10px;
 }
 
-.btn {
-  width: 60px;
+h3 {
+  border: 2px solid black;
+  padding: 30px;
+  margin: 0;
 }
 
-.game-board {
-  height: 98vh;
+.highscore {
+  background-color: black;
+  color: red;
+  border: 2px solid red;
+  width: 200px;
+}
+
+.your-score {
+  background-color: red;
+  color: black;
+  font-weight: bold;
+  width: 200px;
+  border: 2px solid black;
+}
+
+.highscore p {
+  border: 2px solid red;
+  padding: 20px;
+  margin: 0;
+}
+
+.your-score p {
+  border: 2px solid black;
+  padding: 20px;
+  margin: 0;
+}
+
+.highscore h3 {
+  border: 2px solid red;
+}
+
+.score-board-header img {
+  height: 200px;
+  width: 200px;
+}
+
+.scores {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
+  width: 85%;
+  font-size: 30px;
 }
 
-header, main {
-  border-right: 3px solid black;
-  border-left: 3px solid black;
-  margin: 0
-}
-
-.score-tag, .score {
+.return-mainpage {
   font-size: 20px;
   font-weight: bold;
-  margin-top: 10px;
-  color: white;
-}
-
-.score-tag {
+  background-color: black;
   border: 2px solid white;
-  width: 115px;
-  padding: 8px 0 8px 8px;
-}
-
-.score {
   color: white;
 }
+
+/* Grid and Class Lists */
 
 .grid {
   align-items: center;
@@ -171,14 +273,7 @@ header, main {
   background-size: cover;
 }
 
-.grid div.drake-change {
-  background-image: url('../Pictures/drake.png');
-  background-repeat: repeat;
-  background-size: contain;
-}
-
 .grid div {
-  /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
@@ -231,4 +326,94 @@ header, main {
   background-image: url('../Pictures/snake4.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+/* Media */
+
+@media only screen and (max-width: 1000px) {
+  .grid {
+    width: 600px;
+    height: 600px;
+  }
+  #background header {
+    display: none;
+  }
+  .instructions {
+    font-size: 12px;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .grid {
+    width: 500px;
+    height: 500px;
+    margin-top: -100px;
+  }
+  .instructions {
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  main {
+    width: 100%;
+    margin-top: 300px;
+  }
+  body {
+    margin: 0;
+  }
+  main {
+    margin: 0;
+  }
+  .grid {
+    width: 550px;
+    width: 550px;
+  }
+  #background {
+    background-color: white;
+  }
+  .grid {
+    margin-top: -120px;
+  }
+  .instructions {
+    display: none;
+  }
+  .hidden-instructions {
+    display: flex;
+    justify-content: center;
+  }
+  .difficulty-buttons {
+    margin-bottom: 40px;
+  }
+  .movement-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  .move-buttons{
+    width: 20%;
+    font-size: 50px;
+    padding: 30px 0 30px 0;
+  }
+}
+
+@media only screen and (max-width: 550px){
+.grid{
+  width: 450px;
+  height: 450px;
+}
+
+.move-buttons{
+  width: 20%;
+  font-size: 50px;
+  padding: 20px 0 20px 0;
+  margin-top: -50px;
+}
+
+@media only screen and (max-width: 450px){
+  .grid{
+    width: 350px;
+    height: 350px;
+  }
 }
