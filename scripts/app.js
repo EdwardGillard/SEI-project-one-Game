@@ -14,6 +14,7 @@ function init() {
   const alright = document.querySelector('.alright')
   const startedFromTheBottomNowWeHere = document.querySelector('.now-we-here')
   const backToGame = document.querySelector('#option-one')
+  const NavToScoreBoard = document.querySelector('#option-two')
 
   //* GridInfo
   const width = 10
@@ -311,8 +312,17 @@ function init() {
     document.querySelector('#game-over').style.display = 'flex'
   }
 
-  function backToTheGame(event){
-    console.log('clicked')
+  function backToTheGame() {
+    // console.log('clicked')
+    document.querySelector('#game-over').style.display = 'none'
+    document.querySelector('#background').style.display = 'flex'
+    document.querySelector('.instructions').style.display = 'flex'
+    document.querySelector('header').style.display = 'flex'
+    document.querySelector('.game-board').style.margin = '0'
+    document.querySelector('main').style.backgroundColor = 'white'
+    startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+
+
   }
 
   //* CALLING CREATE BOARD FUNCTION

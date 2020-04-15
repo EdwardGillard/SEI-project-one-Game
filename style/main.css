@@ -11,7 +11,7 @@ body {
   background-repeat: repeat;
   background-size: 200px;
   width: 100%;
-  display: flex;
+  display: None;
   align-items: center;
   flex-direction: column;
 }
@@ -21,6 +21,13 @@ body {
   justify-content: center;
   width: 100%;
   background-color: black;
+}
+
+#score-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .second-main {
@@ -111,11 +118,6 @@ main {
 .buttons {
   display: flex;
   justify-content: center;
-}
-
-.hidden-display {
-  display: none;
-  background: black;
 }
 
 .btn {
