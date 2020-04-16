@@ -201,7 +201,7 @@ function init() {
       //* Changes to game variables.
       recordCount++
       if (difficulty === 'hard') {
-        scoreCount += 5000
+        scoreCount += 50
       } else if (difficulty === 'medium') {
         scoreCount += 30
       } else if (difficulty === 'easy') {
@@ -210,7 +210,7 @@ function init() {
       //* Randomised record position.
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       //* Preventing randomised record position from clashing with drakePosition or drakeSnake.
-      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left')) {
+      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left') || squares[recordPosition].classList.contains('drake1') || squares[recordPosition].classList.contains('drake2') || squares[recordPosition].classList.contains('drake3')) {
         recordPosition = Math.floor(Math.random() * numberOfSquares)
       }
       squares[recordPosition].classList.add('record')
@@ -362,21 +362,20 @@ function init() {
     // console.log('clicked')
     //* prevent refreshing on click
     event.preventDefault()
-    const imageOne = document.querySelector('.drake-score-left')
-    imageOne.src = './Pictures/scoreboard-2.jpg'
+    //* change drake 
+    document.querySelector('.drake-score-left').src = './Pictures/scoreboard-2.jpg'
     document.querySelector('.drake-score-right').src = './Pictures/scoreboard2-flipped.jpg'
     //* Store name in a variable
     const nameValue = document.querySelector('#name').value
-    console.log(nameValue)
+    // console.log(nameValue)
     //* Put that variable 
     let nameLog = document.querySelector('#name-log')
     let scoreThree = document.querySelector('#score-three')
-    // * Condition to replace highscore if > 4000
+    // * Condition to replace highscore
     if (scoreCount > highScore) {
       // nameLogWindow.textContent = scoreCount
       // scoreThreeWindow.textContent = nameValue
       document.querySelector('.your-score').style.display = 'none'
-      //* tried to ammend local storage and over write original however storing the variable as a string only lead to 'nameValue' being displayed
       localStorage.removeItem('nameLog')
       localStorage.removeItem('scoreThree')
       localStorage.setItem('nameLog', nameValue)
@@ -385,8 +384,8 @@ function init() {
       highScoreName = localStorage.getItem('nameLog')
       nameLogWindow.textContent = highScoreName
       scoreThreeWindow.textContent = highScore
-      console.log(highScore)
-      console.log(highScoreName)
+      // console.log(highScore)
+      // console.log(highScoreName)
       audioYeah.play('/sounds/drake_4.mp3')
     } else {
       nameLog.textContent = nameValue
