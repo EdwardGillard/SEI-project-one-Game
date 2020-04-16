@@ -210,7 +210,7 @@ function init() {
       //* Randomised record position.
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       //* Preventing randomised record position from clashing with drakePosition or drakeSnake.
-      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left') || squares[recordPosition].classList.contains('drake1') || squares[recordPosition].classList.contains('drake2') || squares[recordPosition].classList.contains('drake3')) {
+      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left') || squares[recordPosition].classList.contains('drake1') || squares[recordPosition].classList.contains('drake2') || squares[recordPosition].classList.contains('drake3')|| squares[recordPosition].classList.contains('golden')) {
         recordPosition = Math.floor(Math.random() * numberOfSquares)
       }
       squares[recordPosition].classList.add('record')
