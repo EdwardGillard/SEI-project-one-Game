@@ -354,6 +354,8 @@ function init() {
     document.querySelector('.your-score').style.display = 'initial'
     nameLogWindow.textContent = highScoreName
     scoreThreeWindow.textContent = highScore
+    document.querySelector('.drake-score-left').src = './Pictures/scoreboard-one.jpg'
+    document.querySelector('.drake-score-right').src = './Pictures/scoreboardOneflipped.jpg'
     // console.log(highScore)
     // console.log(highScoreName)
   }
