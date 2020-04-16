@@ -104,6 +104,7 @@ header {
   justify-content: space-evenly;
   align-items: center;
   height: 200px;
+  margin-top: 10px;
 }
 
 /* Main Page- The Gane */
@@ -123,6 +124,11 @@ h1 {
   letter-spacing: 15px;
   font-family: 'Gloria Hallelujah', cursive;
   margin: 20px 0 10px 0;
+  text-shadow: 5px 5px 5px seagreen;
+}
+
+#background h1 {
+  animation: bring-in-main 5s 1;
 }
 
 .hidden-instructions {
@@ -133,6 +139,21 @@ h1 {
 .difficulty-buttons {
   text-align: center;
   margin-bottom: 20px;
+}
+
+#but-one:hover {
+  background-color: green;
+  box-shadow: 1px 1px 10px orange;
+}
+
+#but-two:hover {
+  background-color: orange;
+  box-shadow: 1px 1px 10px red;
+}
+
+#but-three:hover {
+  background-color: red;
+  box-shadow: 1px 1px 10px green;
 }
 
 .instructions {
@@ -169,6 +190,8 @@ h1 {
 
 .game-over-header h1 {
   font-family: 'Press Start 2P', cursive;
+  animation: vibrate 3s infinite;
+  color: red;
 }
 
 .score-page-two {
@@ -189,6 +212,13 @@ h1 {
   background-color: black;
   border: 2px solid white;
   color: white;
+}
+
+.options button:hover {
+  background-color: red;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
 }
 
 .game-over-header img {
@@ -224,6 +254,13 @@ form {
 #scoreboard-submit {
   color: white;
   background-color: black;
+}
+
+#scoreboard-submit:hover {
+  background-color: red;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
 }
 
 .highscore {
@@ -278,6 +315,13 @@ form {
   background-color: black;
   border: 2px solid white;
   color: white;
+}
+
+.return-mainpage:hover {
+  background-color: red;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
 }
 
 /* Grid and Class Lists */
@@ -498,4 +542,29 @@ form {
     margin-top: -50px;
   }
   /* Page Two */
+}
+
+/* Keyframes */
+
+@keyframes vibrate {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    transform: translate(-5px);
+    color: red;
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate(5px);
+    color: black;
+  }
+}
+
+@keyframes bring-in-main {
+  0% {
+    transform: translate(400px);
+    color: green;
+    opacity: 0.1;
+  }
+  100% {
+    transform: translate(0px);
+    color: black;
+  }
 }
