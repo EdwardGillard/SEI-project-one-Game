@@ -365,6 +365,8 @@ function init() {
     let scoreThree = document.querySelector('#score-three')
     nameLog.textContent = nameValue
     scoreThree.textContent = scoreCount
+    //* sneak a sound clip in there
+    audioYeah.play('/sounds/drake_4.mp3')
   }
 
   function returnToMain() {
