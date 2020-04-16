@@ -223,7 +223,7 @@ function init() {
         //* produce a random position for golden record
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         //* to prevent golden label from clashing with any other classes
-        while (squares[goldenPosition].classList.contains('drake') || squares[goldenPosition].classList.contains('drake-left') || squares[goldenPosition].classList.contains('record')) {
+        while (squares[goldenPosition].classList.contains('drake') || squares[goldenPosition].classList.contains('drake-left') || squares[goldenPosition].classList.contains('drake1') || squares[goldenPosition].classList.contains('drake2') || squares[goldenPosition].classList.contains('drake3') || squares[goldenPosition].classList.contains('record')) {
           goldenPosition = Math.floor(Math.random() * numberOfSquares)
         }
         squares[goldenPosition].classList.add('golden')
