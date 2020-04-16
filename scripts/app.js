@@ -18,6 +18,9 @@ function init() {
   const addScore = document.querySelector('form')
   const returnToMp = document.querySelector('.return-mainpage')
   const buttonsForMediaQ = document.querySelector('.movement-buttons')
+  const nameLogWindow = document.querySelector('#score-three-window')
+  const scoreThreeWindow = document.querySelector('#name-log-window')
+  const localStorage = window.localStorage
 
   //* GridInfo
   const width = 10
@@ -340,11 +343,8 @@ function init() {
     document.querySelector('#score-board').style.display = 'flex'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
     //* playing around with local storage
-    let localStorage = window.localStorage
-    let nameLogWindow = document.querySelector('#score-three-window')
-    let scoreThreeWindow = document.querySelector('#name-log-window')
     localStorage.setItem('nameLog', 'Aubrey Graham')
-    localStorage.setItem('scoreThree', '3000')
+    localStorage.setItem('scoreThree', '5000')
     let oldScore = localStorage.getItem('nameLog')
     let oldName = localStorage.getItem('scoreThree')
     nameLogWindow.textContent = oldName
@@ -363,10 +363,25 @@ function init() {
     //* Put that variable 
     let nameLog = document.querySelector('#name-log')
     let scoreThree = document.querySelector('#score-three')
-    nameLog.textContent = nameValue
-    scoreThree.textContent = scoreCount
-    //* sneak a sound clip in there
-    audioYeah.play('/sounds/drake_4.mp3')
+    // * Condition to replace highscore if > 4000
+    if (scoreCount > 4000) {
+      nameLogWindow.textContent = scoreCount
+      scoreThreeWindow.textContent = nameValue
+      document.querySelector('.your-score').style.display = 'none'
+      //* tried to ammend local storage and over write original however storing the variable as a string only lead to 'nameValue' being displayed
+      // localStorage.removeItem('nameLog')
+      // localStorage.removeItem('scoreThree')
+      // localStorage.setItem('nameLog', 'nameValue')
+      // localStorage.setItem('scoreThree', 'scoreCount')
+      // let newHighScore = localStorage.getItem('scoreThree')
+      // let newNameScore = localStorage.getItem('nameLog')
+      // nameLogWindow.textContent = newHighScore
+      // scoreThreeWindow.textContent = newNameScore
+      audioYeah.play('/sounds/drake_4.mp3')
+    } else {
+      nameLog.textContent = nameValue
+      scoreThree.textContent = scoreCount
+    }
   }
 
   function returnToMain() {
