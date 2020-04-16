@@ -303,6 +303,7 @@ function init() {
     //* create set of rules for if snake crashes
     if (squares[drakePosition].classList.contains('drake1') || squares[drakePosition].classList.contains('drake2') || squares[drakePosition].classList.contains('drake3')) {
       // console.log('problem in the collision')
+      //* call board clear function
       loser()
     }
   }
@@ -338,8 +339,8 @@ function init() {
     //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
-    document.querySelector('header').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.display = 'flex'
+    document.querySelector('.difficulty-buttons').style.marginTop = '20px'
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
@@ -350,10 +351,11 @@ function init() {
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#score-board').style.display = 'flex'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
-    //* playing around with local storage
     document.querySelector('.your-score').style.display = 'initial'
+    //* display current high score variables.
     nameLogWindow.textContent = highScoreName
     scoreThreeWindow.textContent = highScore
+    //* return drake pics to original state before loading.
     document.querySelector('.drake-score-left').src = './Pictures/scoreboard-one.jpg'
     document.querySelector('.drake-score-right').src = './Pictures/scoreboardOneflipped.jpg'
     // console.log(highScore)
@@ -364,7 +366,7 @@ function init() {
     // console.log('clicked')
     //* prevent refreshing on click
     event.preventDefault()
-    //* change drake 
+    //* change drake pics
     document.querySelector('.drake-score-left').src = './Pictures/scoreboard-2.jpg'
     document.querySelector('.drake-score-right').src = './Pictures/scoreboard2-flipped.jpg'
     //* Store name in a variable
@@ -396,35 +398,37 @@ function init() {
   }
 
   function returnToMain() {
+    //* return to original page - header and instructions. 
     document.querySelector('#score-board').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
-    document.querySelector('header').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.display = 'flex'
+    document.querySelector('.difficulty-buttons').style.marginTop = '20px'
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
   }
 
   function buttonsForMedia(event) {
+    //* switch statement using buttons. Same as ASDW logic.
     // console.log(event.target.value)
     switch (event.target.value) {
       case 'right':
         direction = direction === 'left' ? 'left' : 'right'
-        console.log('direction right')
+        // console.log('direction right')
         break
 
       case 'left':
         direction = direction === 'right' ? 'right' : 'left'
-        console.log('direction left')
+        // console.log('direction left')
         break
 
       case 'up':
         direction = direction === 'down' ? 'down' : 'up'
-        console.log('direction up')
+        // console.log('direction up')
         break
 
       case 'down':
         direction = direction === 'up' ? 'up' : 'down'
-        console.log('direction down')
+        // console.log('direction down')
         break
     }
   }
