@@ -18,9 +18,15 @@ function init() {
   const addScore = document.querySelector('form')
   const returnToMp = document.querySelector('.return-mainpage')
   const buttonsForMediaQ = document.querySelector('.movement-buttons')
-  const nameLogWindow = document.querySelector('#score-three-window')
-  const scoreThreeWindow = document.querySelector('#name-log-window')
+
+  //* High score Globals
+  const nameLogWindow = document.querySelector('#name-log-window')
+  const scoreThreeWindow = document.querySelector('#score-three-window')
   const localStorage = window.localStorage
+  localStorage.setItem('nameLog', 'Aubrey Graham')
+  localStorage.setItem('scoreThree', '5000')
+  let highScoreName = localStorage.getItem('nameLog')
+  let highScore = localStorage.getItem('scoreThree')
 
   //* GridInfo
   const width = 10
@@ -74,6 +80,7 @@ function init() {
     document.querySelector('header').style.display = 'none'
     document.querySelector('.game-board').style.margin = '40px 0 5px 0'
     document.querySelector('main').style.backgroundColor = 'black'
+    document.querySelector('.difficulty-buttons').style.display = 'none'
     //* Start Movement
     difficulty = event.target.value
     if (event.target.value === 'hard') {
@@ -194,7 +201,7 @@ function init() {
       //* Changes to game variables.
       recordCount++
       if (difficulty === 'hard') {
-        scoreCount += 50
+        scoreCount += 5000
       } else if (difficulty === 'medium') {
         scoreCount += 30
       } else if (difficulty === 'easy') {
@@ -332,6 +339,7 @@ function init() {
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
     document.querySelector('header').style.display = 'flex'
+    document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
@@ -343,20 +351,20 @@ function init() {
     document.querySelector('#score-board').style.display = 'flex'
     startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
     //* playing around with local storage
-    localStorage.setItem('nameLog', 'Aubrey Graham')
-    localStorage.setItem('scoreThree', '5000')
-    let oldScore = localStorage.getItem('nameLog')
-    let oldName = localStorage.getItem('scoreThree')
-    nameLogWindow.textContent = oldName
-    scoreThreeWindow.textContent = oldScore
-    console.log(oldScore)
-    console.log(oldName)
+    document.querySelector('.your-score').style.display = 'initial'
+    nameLogWindow.textContent = highScoreName
+    scoreThreeWindow.textContent = highScore
+    // console.log(highScore)
+    // console.log(highScoreName)
   }
 
   function addToScoreBoard(event) {
     // console.log('clicked')
     //* prevent refreshing on click
     event.preventDefault()
+    const imageOne = document.querySelector('.drake-score-left')
+    imageOne.src = './Pictures/scoreboard-2.jpg'
+    document.querySelector('.drake-score-right').src = './Pictures/scoreboard2-flipped.jpg'
     //* Store name in a variable
     const nameValue = document.querySelector('#name').value
     console.log(nameValue)
@@ -364,19 +372,21 @@ function init() {
     let nameLog = document.querySelector('#name-log')
     let scoreThree = document.querySelector('#score-three')
     // * Condition to replace highscore if > 4000
-    if (scoreCount > 4000) {
-      nameLogWindow.textContent = scoreCount
-      scoreThreeWindow.textContent = nameValue
+    if (scoreCount > highScore) {
+      // nameLogWindow.textContent = scoreCount
+      // scoreThreeWindow.textContent = nameValue
       document.querySelector('.your-score').style.display = 'none'
       //* tried to ammend local storage and over write original however storing the variable as a string only lead to 'nameValue' being displayed
-      // localStorage.removeItem('nameLog')
-      // localStorage.removeItem('scoreThree')
-      // localStorage.setItem('nameLog', 'nameValue')
-      // localStorage.setItem('scoreThree', 'scoreCount')
-      // let newHighScore = localStorage.getItem('scoreThree')
-      // let newNameScore = localStorage.getItem('nameLog')
-      // nameLogWindow.textContent = newHighScore
-      // scoreThreeWindow.textContent = newNameScore
+      localStorage.removeItem('nameLog')
+      localStorage.removeItem('scoreThree')
+      localStorage.setItem('nameLog', nameValue)
+      localStorage.setItem('scoreThree', scoreCount)
+      highScore = localStorage.getItem('scoreThree')
+      highScoreName = localStorage.getItem('nameLog')
+      nameLogWindow.textContent = highScoreName
+      scoreThreeWindow.textContent = highScore
+      console.log(highScore)
+      console.log(highScoreName)
       audioYeah.play('/sounds/drake_4.mp3')
     } else {
       nameLog.textContent = nameValue
@@ -388,6 +398,7 @@ function init() {
     document.querySelector('#score-board').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
     document.querySelector('header').style.display = 'flex'
+    document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'white'
   }
