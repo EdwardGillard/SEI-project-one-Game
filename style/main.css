@@ -547,7 +547,7 @@ form {
   .grid {
     width: 450px;
     height: 450px;
-    margin-top: -200px;
+    margin-top: -100px;
   }
   .game-board {
     margin-top: 50px;
@@ -561,6 +561,9 @@ form {
     width: 20%;
     font-size: 50px;
     padding: 20px 0 20px 0;
+  }
+  .hidden-instructions{
+    display: none;
   }
   /* Page Two */
   .second-main {
