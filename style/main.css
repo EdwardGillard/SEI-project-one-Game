@@ -79,7 +79,6 @@ header {
   text-align: center;
   background-color: white;
   border-top: 3px solid black;
-  height: 155px;
   margin-top: -50px;
   display: flex;
   flex-direction: column;
@@ -113,10 +112,41 @@ header {
   display: none;
 }
 
+.movement-buttons button {
+  border-radius: 50%;
+  color: white;
+  background-image: url('../Pictures/buttonface.jpg');
+  background-size: 100px;
+  background-repeat: no-repeat;
+}
+
+.movement-buttons button:hover {
+  background-image: url('../Pictures/drakeBb.jpg');
+}
+
+.mute-button {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+
+.mute-button button {
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  height: 25px;
+  width: 50px;
+}
+
+.mute-button button:hover {
+  background: grey;
+  box-shadow: 5px 5px 5px black;
+}
+
 header, main {
   border-right: 3px solid black;
   border-left: 3px solid black;
-  margin: 0
+  margin: 0;
 }
 
 h1 {
@@ -134,6 +164,7 @@ h1 {
 .hidden-instructions {
   display: none;
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .difficulty-buttons {
@@ -141,6 +172,12 @@ h1 {
   justify-content: center;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.difficulty-buttons button {
+  background-color: grey;
+  border: 2px solid black;
+  margin: 0 5px 0 5px;
 }
 
 #but-one:hover {
@@ -161,6 +198,7 @@ h1 {
 .instructions {
   text-align: center;
   padding: 0 140px 15px 140px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .game-board {
@@ -206,6 +244,10 @@ h1 {
   width: 50%;
   display: flex;
   justify-content: space-evenly;
+}
+
+h2 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .options button {
@@ -407,13 +449,18 @@ form {
   .game-board {
     margin-top: -25px;
   }
-  #background header {
+  #background h1 {
     display: none;
+  }
+  .mute-button {
+    display: flex;
   }
   .instructions {
     font-size: 12px;
-    margin-top: 30px;
     width: 100%;
+  }
+  .mute-button button:hover {
+    box-shadow: none;
   }
   /* Page Two */
   .second-main {
@@ -437,9 +484,6 @@ form {
   .game-board {
     margin-top: -50px;
   }
-  .instructions {
-    margin-top: 40px;
-  }
   /* Page Two */
 }
 
@@ -447,13 +491,10 @@ form {
   /* Page One */
   main {
     width: 100%;
-    margin-top: 300px;
+    margin: 0;
   }
   header {
     width: 100%;
-  }
-  main {
-    margin: 0;
   }
   .grid {
     width: 550px;
@@ -475,16 +516,6 @@ form {
   .difficulty-buttons {
     margin-bottom: 40px;
   }
-  .movement-buttons {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-  }
-  .move-buttons {
-    width: 20%;
-    font-size: 50px;
-    padding: 30px 0 30px 0;
-  }
   /* Page Two */
   .game-over-header h1 {
     font-size: 30px;
@@ -492,10 +523,25 @@ form {
   .third-main h1 {
     font-size: 30px;
   }
+  /* Page Three */
+  input {
+    height: 35px;
+    font-size: 16px;
+    padding-left: 5px;
+    border: 2px solid black;
+  }
 }
 
 @media only screen and (max-width: 550px) {
   /* Page One */
+
+  main{
+    background-color: black;
+    color: white;
+  }
+  .mute-button{
+    background-color: black;
+  }
   .grid {
     width: 450px;
     height: 450px;
@@ -503,6 +549,11 @@ form {
   }
   .game-board {
     margin-top: 50px;
+  }
+  .movement-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
   }
   .move-buttons {
     width: 20%;
@@ -516,6 +567,8 @@ form {
   .game-over-header {
     background-color: black;
     color: red;
+    width: 85%;
+    border: 8px solid white;
   }
   .game-over-header img {
     display: none;
@@ -531,6 +584,12 @@ form {
   /* Page three */
   .score-board-header img {
     display: none;
+  }
+  .score-board-header{
+    background-color: lightgray;
+  }
+  .third-main{
+    background-color: lightgray;
   }
 }
 

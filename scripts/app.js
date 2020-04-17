@@ -18,13 +18,14 @@ function init() {
   const addScore = document.querySelector('form')
   const returnToMp = document.querySelector('.return-mainpage')
   const buttonsForMediaQ = document.querySelector('.movement-buttons')
+  const muteButton = document.querySelector('.mute-button')
 
   //* High score Globals
   const nameLogWindow = document.querySelector('#name-log-window')
   const scoreThreeWindow = document.querySelector('#score-three-window')
   const localStorage = window.localStorage
   localStorage.setItem('nameLog', 'Aubrey Graham')
-  localStorage.setItem('scoreThree', '5000')
+  localStorage.setItem('scoreThree', '2000')
   let highScoreName = localStorage.getItem('nameLog')
   let highScore = localStorage.getItem('scoreThree')
 
@@ -77,7 +78,8 @@ function init() {
     squares[recordPosition].classList.add('record')
     //* DOM Changes on game start
     document.querySelector('.instructions').style.display = 'none'
-    document.querySelector('header').style.display = 'none'
+    document.querySelector('h1').style.display = 'none'
+    muteButton.style.backgroundColor = 'black'
     document.querySelector('.game-board').style.margin = '40px 0 5px 0'
     document.querySelector('main').style.backgroundColor = 'black'
     document.querySelector('.difficulty-buttons').style.display = 'none'
@@ -210,7 +212,7 @@ function init() {
       //* Randomised record position.
       recordPosition = Math.floor(Math.random() * numberOfSquares)
       //* Preventing randomised record position from clashing with drakePosition or drakeSnake.
-      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left') || squares[recordPosition].classList.contains('drake1') || squares[recordPosition].classList.contains('drake2') || squares[recordPosition].classList.contains('drake3')|| squares[recordPosition].classList.contains('golden')) {
+      while (squares[recordPosition].classList.contains('drake') || squares[recordPosition].classList.contains('drake-left') || squares[recordPosition].classList.contains('drake1') || squares[recordPosition].classList.contains('drake2') || squares[recordPosition].classList.contains('drake3') || squares[recordPosition].classList.contains('golden')) {
         recordPosition = Math.floor(Math.random() * numberOfSquares)
       }
       squares[recordPosition].classList.add('record')
@@ -338,6 +340,7 @@ function init() {
     // console.log('clicked')
     //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
+    muteButton.style.backgroundColor = 'white'
     document.querySelector('#background').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.marginTop = '20px'
@@ -401,6 +404,7 @@ function init() {
     //* return to original page - header and instructions. 
     document.querySelector('#score-board').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
+    muteButton.style.backgroundColor = 'white'
     document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.marginTop = '20px'
     document.querySelector('.game-board').style.margin = '0'
@@ -433,6 +437,23 @@ function init() {
     }
   }
 
+  function muteAudio() {
+    console.log('clicked')
+    if (muteButton) {
+      audioYeah.muted = true
+      goldie.muted = true
+      startedFromTheBottomNowWeHere.muted = true
+      alright.muted = true
+    } else if (){
+      audioYeah.muted = false
+      goldie.muted = false
+      startedFromTheBottomNowWeHere.muted = false
+      alright.muted = false
+    }
+  }
+
+
+
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
@@ -445,6 +466,7 @@ function init() {
   addScore.addEventListener('submit', addToScoreBoard)
   returnToMp.addEventListener('click', returnToMain)
   buttonsForMediaQ.addEventListener('click', buttonsForMedia)
+  muteButton.addEventListener('click', muteAudio)
 }
 
 window.addEventListener('DOMContentLoaded', init)
