@@ -444,7 +444,7 @@ function init() {
       goldie.muted = true
       startedFromTheBottomNowWeHere.muted = true
       alright.muted = true
-    } else if (){
+    } else {
       audioYeah.muted = false
       goldie.muted = false
       startedFromTheBottomNowWeHere.muted = false
