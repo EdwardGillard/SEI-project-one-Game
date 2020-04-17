@@ -9,16 +9,15 @@ function init() {
   const scorePageTwo = document.querySelector('.score-page-two')
   const backgroundChange = document.querySelector('#background')
   const buttonsAll = document.querySelector('.difficulty-buttons')
-  const audioYeah = document.querySelector('.yeah')
-  const goldie = document.querySelector('.goldy')
-  const alright = document.querySelector('.alright')
-  const startedFromTheBottomNowWeHere = document.querySelector('.now-we-here')
   const backToGame = document.querySelector('#option-one')
   const NavToScoreBoard = document.querySelector('#option-two')
   const addScore = document.querySelector('form')
   const returnToMp = document.querySelector('.return-mainpage')
   const buttonsForMediaQ = document.querySelector('.movement-buttons')
   const muteButton = document.querySelector('.mute-button')
+  const allAudio = document.querySelector('#audio')
+  const recordSounds = document.querySelector('#record-sounds')
+
 
   //* High score Globals
   const nameLogWindow = document.querySelector('#name-log-window')
@@ -63,7 +62,6 @@ function init() {
 
   function playTheGame(event) {
     //* pause previous audio
-    startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
     //* reset score
     scoreCount = 0
     recordCount = 0
@@ -83,6 +81,7 @@ function init() {
     document.querySelector('.game-board').style.margin = '40px 0 5px 0'
     document.querySelector('main').style.backgroundColor = 'black'
     document.querySelector('.difficulty-buttons').style.display = 'none'
+    document.querySelector('.hidden-instructions').style.display = 'none'
     //* Start Movement
     difficulty = event.target.value
     if (event.target.value === 'hard') {
@@ -194,11 +193,11 @@ function init() {
       squares[recordPosition].classList.remove('record')
       //* audio clip
       if (recordCount % 2 === 0) {
-        audioYeah.play('/sounds/drake_4.mp3')
+        yeahAudio()
       } else if (recordCount % 3 === 0) {
-        alright.play('sounds/drake_5.mp3')
+        alrightAudio()
       } else {
-        alright.play('sounds/drake_5.mp3')
+        alrightAudio()
       }
       //* Changes to game variables.
       recordCount++
@@ -220,8 +219,7 @@ function init() {
       //* if recordCount is a multiple of 10...
       if (recordCount % 10 === 0) {
         //* Hotline Bling
-        goldie.load('sounds/hotline-bling.mp3')
-        goldie.play('sounds/hotline-bling.mp3')
+        hotLineB()
         //* produce a random position for golden record
         goldenPosition = Math.floor(Math.random() * numberOfSquares)
         //* to prevent golden label from clashing with any other classes
@@ -245,7 +243,7 @@ function init() {
         }
         //* time out for golden record
         golden = setTimeout(() => {
-          goldie.pause('sounds/hotline-bling.mp3')
+          hotlinePause()
           squares[goldenPosition].classList.remove('golden')
           backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
           gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
@@ -256,7 +254,7 @@ function init() {
     //* conditions for if drake catches the golden record. Speed up and score differences.
     if (squares[drakePosition].classList.contains('golden')) {
       squares[goldenPosition].classList.remove('golden')
-      goldie.pause('sounds/hotline-bling.mp3')
+      hotlinePause()
       if (difficulty === 'hard') {
         scoreCount += 100
         speed -= 20
@@ -313,9 +311,8 @@ function init() {
   function loser() {
     //* console log & audio clips
     // console.log('game over')
-    goldie.pause('sounds/hotline-bling.mp3')
-    startedFromTheBottomNowWeHere.load('sounds/started-from-the-bottom.wav')
-    startedFromTheBottomNowWeHere.play('sounds/started-from-the-bottom.wav')
+    hotlinePause()
+    startedFromTheBottom()
     //* clear up loose ends
     clearInterval(speedChanger)
     squares[recordPosition].classList.remove('record')
@@ -345,15 +342,17 @@ function init() {
     document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.marginTop = '20px'
     document.querySelector('.game-board').style.margin = '0'
-    document.querySelector('main').style.backgroundColor = 'white'
-    startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+    document.querySelector('main').style.backgroundColor = 'black'
+    muteButton.style.backgroundColor = 'black'
+    document.querySelector('.hidden-instructions').style.display = 'flex'
+    startedFromTheBottomPause()
   }
 
   function NavToScore() {
     //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
     document.querySelector('#score-board').style.display = 'flex'
-    startedFromTheBottomNowWeHere.pause('sounds/started-from-the-bottom.wav')
+    startedFromTheBottomPause()
     document.querySelector('.your-score').style.display = 'initial'
     //* display current high score variables.
     nameLogWindow.textContent = highScoreName
@@ -393,7 +392,7 @@ function init() {
       scoreThreeWindow.textContent = highScore
       // console.log(highScore)
       // console.log(highScoreName)
-      audioYeah.play('/sounds/drake_4.mp3')
+      yeahAudio()
     } else {
       nameLog.textContent = nameValue
       scoreThree.textContent = scoreCount
@@ -408,7 +407,9 @@ function init() {
     document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.marginTop = '20px'
     document.querySelector('.game-board').style.margin = '0'
-    document.querySelector('main').style.backgroundColor = 'white'
+    document.querySelector('main').style.backgroundColor = 'black'
+    muteButton.style.backgroundColor = 'black'
+    document.querySelector('.hidden-instructions').style.display = 'flex'
   }
 
   function buttonsForMedia(event) {
@@ -437,19 +438,50 @@ function init() {
     }
   }
 
+  function yeahAudio() {
+    recordSounds.src = './sounds/drake_4.mp3'
+    recordSounds.play()
+  }
+
+  function alrightAudio() {
+    recordSounds.src = './sounds/drake_5.mp3'
+    recordSounds.play()
+  }
+
+  function startedFromTheBottom() {
+    allAudio.src = './sounds/started-from-the-bottom.wav'
+    allAudio.play()
+  }
+
+  function startedFromTheBottomPause() {
+    allAudio.src = './sounds/started-from-the-bottom.wav'
+    allAudio.pause()
+  }
+
+  function hotLineB() {
+    allAudio.src = './sounds/hotline-bling.mp3'
+    allAudio.play()
+  }
+
+  function hotlinePause() {
+    allAudio.src = './sounds/hotline-bling.mp3'
+    allAudio.pause()
+  }
+
   function muteAudio() {
-    console.log('clicked')
-    if (muteButton) {
-      audioYeah.muted = true
-      goldie.muted = true
-      startedFromTheBottomNowWeHere.muted = true
-      alright.muted = true
+    // console.log('clicked')
+    const mute = document.querySelector('.mute-button-class')
+    if (allAudio.muted === true) {
+      allAudio.muted = false
+      recordSounds.muted = false
+      mute.classList.remove('muted')
+      mute.textContent = 'Mute'
     } else {
-      audioYeah.muted = false
-      goldie.muted = false
-      startedFromTheBottomNowWeHere.muted = false
-      alright.muted = false
-    }
+      allAudio.muted = true
+      recordSounds.muted = true
+      mute.classList.add('muted')
+      mute.textContent = 'Muted'
+    } 
   }
 
 

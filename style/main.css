@@ -143,6 +143,11 @@ header {
   box-shadow: 5px 5px 5px black;
 }
 
+.mute-button button.muted{
+  background-color: grey;
+  font-weight: bold;
+}
+
 header, main {
   border-right: 3px solid black;
   border-left: 3px solid black;
@@ -162,9 +167,11 @@ h1 {
 }
 
 .hidden-instructions {
-  display: none;
+  display: flex;
   text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  justify-content: center;
 }
 
 .difficulty-buttons {
@@ -508,10 +515,6 @@ form {
   }
   .instructions {
     display: none;
-  }
-  .hidden-instructions {
-    display: flex;
-    justify-content: center;
   }
   .difficulty-buttons {
     margin-bottom: 40px;
