@@ -203,8 +203,8 @@ h1 {
 }
 
 .game-board {
-  margin-top: 60px;
-  height: 98vh;
+  margin: 60px 0 20px 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,10 +222,12 @@ h1 {
   border: 2px solid white;
   width: 115px;
   padding: 8px 0 8px 8px;
+  margin-bottom: 20px;
 }
 
 .score {
   color: white;
+  margin-bottom: 20px;
 }
 
 /* Page 2- Game Over  */
