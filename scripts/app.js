@@ -98,24 +98,28 @@ function init() {
 
   function moving(event) {
     switch (event.keyCode) {
-      case 68:
+      case 39:
         direction = direction === 'left' ? 'left' : 'right'
         // console.log('right')
+        event.preventDefault()
         break
 
-      case 65:
+      case 37:
         direction = direction === 'right' ? 'right' : 'left'
         // console.log('left')
+        event.preventDefault()
         break
 
-      case 87:
+      case 38:
         direction = direction === 'down' ? 'down' : 'up'
         // console.log('up')
+        event.preventDefault()
         break
 
-      case 83:
+      case 40:
         direction = direction === 'up' ? 'up' : 'down'
         // console.log('down')
+        event.preventDefault()
         break
     }
   }
@@ -481,7 +485,7 @@ function init() {
       recordSounds.muted = true
       mute.classList.add('muted')
       mute.textContent = 'Muted'
-    } 
+    }
   }
 
 

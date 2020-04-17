@@ -79,7 +79,7 @@ header {
   text-align: center;
   background-color: white;
   border-top: 3px solid black;
-  margin-top: -50px;
+  margin-top: -100px;
   display: flex;
   flex-direction: column;
 }
@@ -116,7 +116,7 @@ header {
   border-radius: 50%;
   color: white;
   background-image: url('../Pictures/buttonface.jpg');
-  background-size: 100px;
+  background-size: 80px;
   background-repeat: no-repeat;
 }
 
@@ -158,8 +158,8 @@ h1 {
   font-size: 50px;
   letter-spacing: 15px;
   font-family: 'Gloria Hallelujah', cursive;
-  margin: 20px 0 10px 0;
   text-shadow: 5px 5px 5px seagreen;
+  margin: 0 auto;
 }
 
 #background h1 {
@@ -167,7 +167,7 @@ h1 {
 }
 
 .hidden-instructions {
-  display: flex;
+  display: none;
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: white;
@@ -175,10 +175,10 @@ h1 {
 }
 
 .difficulty-buttons {
+  margin: 10px; 
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .difficulty-buttons button {
@@ -204,11 +204,13 @@ h1 {
 
 .instructions {
   text-align: center;
-  padding: 0 140px 15px 140px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  padding: 0 10px 0px 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
 }
 
 .game-board {
+  margin-top: 60px;
   height: 98vh;
   display: flex;
   flex-direction: column;
@@ -541,7 +543,7 @@ form {
     background-color: black;
     color: white;
   }
-  .difficulty-buttons{
+  .difficulty-buttons {
     margin-bottom: 70px;
   }
   .mute-button {
@@ -550,10 +552,9 @@ form {
   .grid {
     width: 450px;
     height: 450px;
-    margin-top: -100px;
   }
   .game-board {
-    margin-top: 50px;
+    margin-top: -100px;
   }
   .movement-buttons {
     display: flex;
@@ -561,11 +562,11 @@ form {
     justify-content: space-evenly;
   }
   .move-buttons {
-    width: 20%;
+    width: 18%;
     font-size: 30px;
     padding: 20px 0 20px 0;
   }
-  .hidden-instructions{
+  .hidden-instructions {
     display: none;
   }
   /* Page Two */
