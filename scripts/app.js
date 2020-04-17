@@ -228,10 +228,10 @@ function init() {
         }
         squares[goldenPosition].classList.add('golden')
         //* DOM changes for golden record timer
-        backgroundChange.style.backgroundImage = 'url("Pictures/giphy (1).gif")'
+        backgroundChange.style.backgroundImage = 'url("./Pictures/giphy (1).gif")'
         backgroundChange.style.backgroundSize = '200px'
         backgroundChange.style.backgroundRepeat = 'repeat'
-        gameBoard.style.backgroundImage = 'url("Pictures/backgroundchanger.gif")'
+        gameBoard.style.backgroundImage = 'url("./Pictures/backgroundchanger.gif")'
         gameBoard.style.backgroundSize = 'cover'
         //* conditions for timeout
         if (difficulty === 'hard') {
@@ -245,8 +245,8 @@ function init() {
         golden = setTimeout(() => {
           hotlinePause()
           squares[goldenPosition].classList.remove('golden')
-          backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
-          gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
+          backgroundChange.style.backgroundImage = 'url("./Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
+          gameBoard.style.backgroundImage = 'url("./Pictures/main-background.jpg")'
         }, timer)
       }
       growTheSnake()
@@ -270,8 +270,8 @@ function init() {
       }
       recordCount++
       clearTimeout(golden)
-      backgroundChange.style.backgroundImage = 'url("/Users/edwardgillard/development/Projects/SEI-project-one-Game/Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
-      gameBoard.style.backgroundImage = 'url("Pictures/main-background.jpg")'
+      backgroundChange.style.backgroundImage = 'url("./Pictures/88-887616_boy-if-you-dont-stop-drake-face-png.png")'
+      gameBoard.style.backgroundImage = 'url("./Pictures/main-background.jpg")'
       // console.log(`golden record score: ${scoreCount}`)
     }
     //* display score changes for records & golden records
