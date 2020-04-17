@@ -143,7 +143,7 @@ header {
   box-shadow: 5px 5px 5px black;
 }
 
-.mute-button button.muted{
+.mute-button button.muted {
   background-color: grey;
   font-weight: bold;
 }
@@ -537,12 +537,11 @@ form {
 
 @media only screen and (max-width: 550px) {
   /* Page One */
-
-  main{
+  main {
     background-color: black;
     color: white;
   }
-  .mute-button{
+  .mute-button {
     background-color: black;
   }
   .grid {
@@ -588,10 +587,10 @@ form {
   .score-board-header img {
     display: none;
   }
-  .score-board-header{
+  .score-board-header {
     background-color: lightgray;
   }
-  .third-main{
+  .third-main {
     background-color: lightgray;
   }
 }

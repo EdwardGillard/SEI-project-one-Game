@@ -375,8 +375,8 @@ function init() {
     const nameValue = document.querySelector('#name').value
     // console.log(nameValue)
     //* Put that variable 
-    let nameLog = document.querySelector('#name-log')
-    let scoreThree = document.querySelector('#score-three')
+    const nameLog = document.querySelector('#name-log')
+    const scoreThree = document.querySelector('#score-three')
     // * Condition to replace highscore
     if (scoreCount > highScore) {
       // nameLogWindow.textContent = scoreCount
