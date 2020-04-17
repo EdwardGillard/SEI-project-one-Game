@@ -541,6 +541,9 @@ form {
     background-color: black;
     color: white;
   }
+  .difficulty-buttons{
+    margin-bottom: 70px;
+  }
   .mute-button {
     background-color: black;
   }
@@ -559,7 +562,7 @@ form {
   }
   .move-buttons {
     width: 20%;
-    font-size: 50px;
+    font-size: 30px;
     padding: 20px 0 20px 0;
   }
   .hidden-instructions{
