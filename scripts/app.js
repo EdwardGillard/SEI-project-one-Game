@@ -81,7 +81,6 @@ function init() {
     document.querySelector('.game-board').style.margin = '40px 0 5px 0'
     document.querySelector('main').style.backgroundColor = 'black'
     document.querySelector('.difficulty-buttons').style.display = 'none'
-    document.querySelector('.hidden-instructions').style.display = 'none'
     //* Start Movement
     difficulty = event.target.value
     if (event.target.value === 'hard') {
