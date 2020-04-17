@@ -347,7 +347,6 @@ function init() {
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'black'
     muteButton.style.backgroundColor = 'black'
-    document.querySelector('.hidden-instructions').style.display = 'flex'
     startedFromTheBottomPause()
   }
 
@@ -412,7 +411,6 @@ function init() {
     document.querySelector('.game-board').style.margin = '0'
     document.querySelector('main').style.backgroundColor = 'black'
     muteButton.style.backgroundColor = 'black'
-    document.querySelector('.hidden-instructions').style.display = 'flex'
   }
 
   function buttonsForMedia(event) {
