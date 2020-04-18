@@ -17,6 +17,7 @@ function init() {
   const muteButton = document.querySelector('.mute-button')
   const allAudio = document.querySelector('#audio')
   const recordSounds = document.querySelector('#record-sounds')
+  const mainPage = document.querySelector('main')
 
 
   //* High score Globals
@@ -78,8 +79,9 @@ function init() {
     document.querySelector('.instructions').style.display = 'none'
     document.querySelector('h1').style.display = 'none'
     muteButton.style.backgroundColor = 'black'
-    document.querySelector('.game-board').style.margin = '40px 0 5px 0'
-    document.querySelector('main').style.backgroundColor = 'black'
+    mainPage.style.backgroundColor = 'black'
+    mainPage.style.height = '95vh'
+    document.querySelector('.score').marginBottom = '10px'
     document.querySelector('.difficulty-buttons').style.display = 'none'
     //* Start Movement
     difficulty = event.target.value
@@ -344,8 +346,8 @@ function init() {
     document.querySelector('#background').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.display = 'flex'
     document.querySelector('.difficulty-buttons').style.marginTop = '20px'
-    document.querySelector('.game-board').style.margin = '0'
-    document.querySelector('main').style.backgroundColor = 'black'
+    mainPage.style.backgroundColor = 'black'
+    mainPage.style.height = '110vh'
     muteButton.style.backgroundColor = 'black'
     startedFromTheBottomPause()
   }
