@@ -340,6 +340,8 @@ function init() {
 
   function backToTheGame() {
     // console.log('clicked')
+    //* reset score
+    scoreCount = 0
     //* DOM manipulations
     document.querySelector('#game-over').style.display = 'none'
     muteButton.style.backgroundColor = 'white'
@@ -404,6 +406,8 @@ function init() {
   }
 
   function returnToMain() {
+    //* reset score
+    scoreCount = 0
     //* return to original page - header and instructions. 
     document.querySelector('#score-board').style.display = 'none'
     document.querySelector('#background').style.display = 'flex'
