@@ -73,7 +73,7 @@ Using a popular rap artist as my theme came with the benefit of a wealth of opti
 
 #### High Score Board:
 
-This task was purely a HTML, CSS and JS task therefore creating a fully functional Highscores board wasnt feasible however using window.localstorage I was able to adapt a logic where if the user beats the high score currently stored within the localstorage they would be the new highscore. This was achieved by storing the new highscore and name in the local storage, then using getItem to pull the value from the local storage and manipulating a span using .textContent to present it on the screen. I also seized the oppotunity to add a little easter egg. The incumbent high score holder is Aubrey Graham (Drake's real name).
+Due to this project focusing purely on HTML, CSS and JS creating a fully functional Highscores board wasn't feasible, however, using **window.localstorage** I was able to adapt a logic where if the user beats the high score currently stored within the localstorage they would be the new highscore. This was achieved by storing the new highscore and name in the local storage, then using getItem to pull the value from the local storage and manipulating a span using .textContent to present it on the screen. I also seized the oppotunity to add a little easter egg. The incumbent high score holder is Aubrey Graham (Drake's real name).
 
 ----------
 
