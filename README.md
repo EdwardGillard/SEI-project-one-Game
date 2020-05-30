@@ -6,6 +6,10 @@ I'm sure many people reading this will remember the first time they played the l
 
 I made the decision early on to turn my choice of *Snake* into a *Drake* themed version. Instead of eating food the idea is that *Drake* catches records and as he does his popularity increases, symbolised by the **Drake Snake** growing.
 
+![Screenshot of Drake game](images-for-readme/Drake1.jpeg)
+![Screenshot of Drake game golen](images-for-readme/Drake2.jpeg)
+![Screenshot of Drake game game over](images-for-readme/Drake3.jpeg)
+
 As mentioned above this was my first project with GA but also my first experience using HTML, CSS and Javascript to create a complete game in 8 days. Within this Readme I will outline my wins and struggles.
 
 ---------------
@@ -61,6 +65,8 @@ For my records (aka foods) I decided to use the Snake 2 model. For every tenth b
 
 The key concept and one of the biggest hurdles to overcome in this game is **collisions**. Using classList.contains I was able to create a condition where if the index of the Drake Snake's head was shared with any other part of the Drake Snake it calls on the end game logic. The second part of the collision logic came from adapting the restrictions around the board mentioned above. If the Drake Snake exceeds the boundaries of the grid the end game logic is once again called.
 
+![Screenshot showing ternary statements](images-for-readme/screenshot2.jpeg)
+
 #### Audio:
 
 Using a popular rap artist as my theme came with the benefit of a wealth of options for audio options. This came in handy when selecting adequate sounds to include in my game. I made the decision to play a snippet of the song 'Hot Line Bling' along side Gifs of the viral music video to create a perfect **Golden record moment** I regulated this using the audio.play, and audio.pause in built functions. 
@@ -87,5 +93,8 @@ I am very happy with the CSS and DOM manipulations. I have displayed an ability 
 
 One of the biggest hurdles came from making the Drake Snake grow. I was able to increase the array of the snake visible in console logs however the index did not follow the head of the snake. This was solved by using unshift to move DrakePosition (the head of the snake) to the front each time then pop the last part of the snake. In the event that Drake reaches a record the grow snake function is called which then doesnt pop the last index of the snake.
 
-Another hurdle was figuring out the logic to prevent the user from using opposite directions. I.e right to left and up to down. This was over come by using a Ternary operator to disable the users ability to user opposite keys. This was an essential piece of logic to prevent bugs in the collision logic as once the snake begins build in the array drakesPosition will instantly occupy the same index as the rest of the body.
+Another hurdle was figuring out the logic to prevent the user from using opposite directions. I.e right to left and up to down. This was over come by using a **ternary operator** to disable the users ability to user opposite keys. This was an essential piece of logic to prevent bugs in the collision logic as once the snake begins build in the array drakesPosition will instantly occupy the same index as the rest of the body.
 
+![Screenshot showing ternary statements](images-for-readme/Screenshot1.jpeg)
+
+-----------------------

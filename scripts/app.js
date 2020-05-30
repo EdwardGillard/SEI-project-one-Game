@@ -147,15 +147,12 @@ function init() {
     //* Conditional statements
     if (direction === 'right') {
       if (x === width - 1) {
-        // console.log('problem in right')
         loser()
-        // console.log(drakeSnake)
       } else {
         drakePosition++
       }
     } else if (direction === 'left') {
       if (x === 0) {
-        // console.log('problem in left')
         loser()
       } else {
         drakePosition--
@@ -163,19 +160,18 @@ function init() {
       }
     } else if (direction === 'up') {
       if (y === 0) {
-        // console.log('problem in up')
         loser()
       } else {
         drakePosition -= width
       }
     } else if (direction === 'down') {
       if (y === width - 1) {
-        // console.log('problem in down')
         loser()
       } else {
         drakePosition += width
       }
     }
+    
     //* add classes back
     squares[drakePosition].classList.add('drake')
     drakeSnake.forEach(index => {
@@ -490,9 +486,6 @@ function init() {
       mute.textContent = 'Muted'
     }
   }
-
-
-
 
   //* CALLING CREATE BOARD FUNCTION
   createTheBoard(drakePosition)
