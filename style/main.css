@@ -168,7 +168,7 @@ h1 {
 }
 
 .difficulty-buttons {
-  margin: 10px; 
+  margin: 10px;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -549,109 +549,102 @@ form {
 }
 
 @media only screen and (max-width: 610px) {
-  .move-buttons{
+  .move-buttons {
     font-size: 55px;
     background-size: 110px;
   }
-
-@media only screen and (max-width: 550px) {
-  /* Page One */
-  main {
-    background-color: black;
-    color: white;
+  @media only screen and (max-width: 550px) {
+    /* Page One */
+    main {
+      background-color: black;
+      color: white;
+    }
+    .difficulty-buttons {
+      margin-bottom: 70px;
+    }
+    .mute-button {
+      background-color: black;
+    }
+    .grid {
+      width: 450px;
+      height: 450px;
+    }
+    .move-buttons {
+      width: 21%;
+      font-size: 60px;
+      background-size: 120px;
+      padding: 20px 0 20px 0;
+    }
+    /* Page Two */
+    .second-main {
+      background-color: red;
+    }
+    .game-over-header {
+      background-color: black;
+      color: red;
+      width: 85%;
+      border: 8px solid white;
+    }
+    .game-over-header img {
+      display: none;
+    }
+    h2 {
+      margin-top: -50px;
+      font-size: 30px;
+    }
+    .options button {
+      color: red;
+      border: 2px solid red;
+    }
+    /* Page three */
+    .score-board-header img {
+      display: none;
+    }
+    .score-board-header {
+      background-color: lightgray;
+    }
+    .third-main {
+      background-color: lightgray;
+    }
   }
-  .difficulty-buttons {
-    margin-bottom: 70px;
+  @media only screen and (max-width: 450px) {
+    /* Page One */
+    .grid {
+      width: 320px;
+      height: 320px;
+    }
+    .move-buttons {
+      font-size: 50px;
+      width: 23%;
+      background-size: 100px;
+    }
   }
-  .mute-button {
-    background-color: black;
+  @media only screen and (max-width: 361px) {
+    .move-buttons {
+      font-size: 34px;
+      width: 22%;
+      background-size: 95px;
+    }
   }
-  .grid {
-    width: 450px;
-    height: 450px;
+  /* Keyframes */
+  @keyframes vibrate {
+    0%, 20%, 40%, 60%, 80%, 100% {
+      transform: translate(-5px);
+      color: red;
+    }
+    10%, 30%, 50%, 70%, 90% {
+      transform: translate(5px);
+      color: black;
+    }
   }
-  .move-buttons {
-    width: 21%;
-    font-size: 60px;
-    background-size: 120px;
-    padding: 20px 0 20px 0;
+  @keyframes bring-in-main {
+    0% {
+      transform: translate(400px);
+      color: green;
+      opacity: 0.1;
+    }
+    100% {
+      transform: translate(0px);
+      color: black;
+    }
   }
-  /* Page Two */
-  .second-main {
-    background-color: red;
-  }
-  .game-over-header {
-    background-color: black;
-    color: red;
-    width: 85%;
-    border: 8px solid white;
-  }
-  .game-over-header img {
-    display: none;
-  }
-  h2 {
-    margin-top: -50px;
-    font-size: 30px;
-  }
-  .options button {
-    color: red;
-    border: 2px solid red;
-  }
-  /* Page three */
-  .score-board-header img {
-    display: none;
-  }
-  .score-board-header {
-    background-color: lightgray;
-  }
-  .third-main {
-    background-color: lightgray;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  /* Page One */
-  .grid {
-    width: 320px;
-    height: 320px;
-  }
-
-  .move-buttons{
-    font-size: 50px;
-    width: 23%;
-    background-size: 100px;
-  }
-}
-
-@media only screen and (max-width: 361px) {
-  .move-buttons{
-    font-size: 34px;
-    width: 22%;
-    background-size: 95px;
-  }
-}
-
-/* Keyframes */
-
-@keyframes vibrate {
-  0%, 20%, 40%, 60%, 80%, 100% {
-    transform: translate(-5px);
-    color: red;
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translate(5px);
-    color: black;
-  }
-}
-
-@keyframes bring-in-main {
-  0% {
-    transform: translate(400px);
-    color: green;
-    opacity: 0.1;
-  }
-  100% {
-    transform: translate(0px);
-    color: black;
-  }
-}

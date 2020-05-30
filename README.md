@@ -33,6 +33,8 @@ As mentioned above this was my first project with GA but also my first experienc
 * Multi-player mode
 * **High score table**
 
+-------------
+
 ## Technologies used.
 
 * HTML 5 with HTML 5 audio
@@ -41,10 +43,11 @@ As mentioned above this was my first project with GA but also my first experienc
 * Git
 * GitHub
 * Google Fonts
+* Google Chrome dev tools
 
 -------
 
-## Approach taken.
+## Approach.
 
 #### Grid Layout, Drake Snake Movement & Records: 
 
@@ -77,6 +80,7 @@ I have taken the time to play the game as much as possible. Numerous bugs have c
 ## Wins and Issues.
 
 #### Wins:
+
 I am very happy with the CSS and DOM manipulations. I have displayed an ability to create something fun and light hearted for the user. There were also numerous pat-on-the-back moments in the JS logic finally over coming or understand why something wasnt working.
 
 #### Hurdles:
