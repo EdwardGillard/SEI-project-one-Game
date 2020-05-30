@@ -216,7 +216,6 @@ function init() {
         recordPosition = Math.floor(Math.random() * numberOfSquares)
       }
       squares[recordPosition].classList.add('record')
-      // console.log(`record count: ${recordCount} score count: ${scoreCount} `)
       //* if recordCount is a multiple of 10...
       if (recordCount % 10 === 0) {
         //* Hotline Bling
@@ -362,12 +361,9 @@ function init() {
     //* return drake pics to original state before loading.
     document.querySelector('.drake-score-left').src = './Pictures/scoreboard-one.jpg'
     document.querySelector('.drake-score-right').src = './Pictures/scoreboardOneflipped.jpg'
-    // console.log(highScore)
-    // console.log(highScoreName)
   }
 
   function addToScoreBoard(event) {
-    // console.log('clicked')
     //* prevent refreshing on click
     event.preventDefault()
     //* change drake pics
@@ -375,25 +371,22 @@ function init() {
     document.querySelector('.drake-score-right').src = './Pictures/scoreboard2-flipped.jpg'
     //* Store name in a variable
     const nameValue = document.querySelector('#name').value
-    // console.log(nameValue)
     //* Put that variable 
     const nameLog = document.querySelector('#name-log')
     const scoreThree = document.querySelector('#score-three')
     // * Condition to replace highscore
     if (scoreCount > highScore) {
-      // nameLogWindow.textContent = scoreCount
-      // scoreThreeWindow.textContent = nameValue
       document.querySelector('.your-score').style.display = 'none'
+      //* remove incumbent highscore
       localStorage.removeItem('nameLog')
       localStorage.removeItem('scoreThree')
+      //* add new high score to local storage
       localStorage.setItem('nameLog', nameValue)
       localStorage.setItem('scoreThree', scoreCount)
       highScore = localStorage.getItem('scoreThree')
       highScoreName = localStorage.getItem('nameLog')
       nameLogWindow.textContent = highScoreName
       scoreThreeWindow.textContent = highScore
-      // console.log(highScore)
-      // console.log(highScoreName)
       yeahAudio()
     } else {
       nameLog.textContent = nameValue

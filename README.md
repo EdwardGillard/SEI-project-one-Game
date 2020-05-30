@@ -34,16 +34,22 @@ As mentioned above this was my first project with GA but also my first experienc
 #### Optional suggested enhancements:
 
 * **Responsive design**
-* Multi-player mode
 * **High score table**
 
 -------------
 
 ## Technologies used.
 
-* HTML 5 with HTML 5 audio
-* CSS3 with animation
-* Javascript (ES5)
+#### Front End:
+
+* **Javascript (ES5)**
+* **HTML 5 with HTML 5 audio**
+* **CSS3 with Keyframe animations**
+
+#### Dev Tools:
+
+* VScode
+* Eslint
 * Git
 * GitHub
 * Google Fonts
@@ -69,11 +75,13 @@ The key concept and one of the biggest hurdles to overcome in this game is **col
 
 #### Audio:
 
-Using a popular rap artist as my theme came with the benefit of a wealth of options for audio options. This came in handy when selecting adequate sounds to include in my game. I made the decision to play a snippet of the song 'Hot Line Bling' along side Gifs of the viral music video to create a perfect **Golden record moment** I regulated this using the audio.play, and audio.pause in built functions. 
+Using a popular rap artist as my theme came with the benefit of a wealth of options for audio options. This came in handy when selecting adequate sounds to include in my game. I made the decision to play a snippet of the song 'Hotline Bling' along side Gifs of the viral music video to create a perfect **Golden record moment** I regulated this using the audio.play, and audio.pause in built functions. 
 
 #### High Score Board:
 
-Due to this project focusing purely on HTML, CSS and JS creating a fully functional Highscores board wasn't feasible, however, using **window.localstorage** I was able to adapt a logic where if the user beats the high score currently stored within the localstorage they would be the new highscore. This was achieved by storing the new highscore and name in the local storage, then using getItem to pull the value from the local storage and manipulating a span using .textContent to present it on the screen. I also seized the oppotunity to add a little easter egg. The incumbent high score holder is Aubrey Graham (Drake's real name).
+Due to this project focusing purely on HTML, CSS and JS creating a fully functional High scores board wasn't feasible, however, using **window.localstorage** I was able to adapt a logic where if the user beats the high score currently stored within the localstorage they would be the new high score. This was achieved by storing the new high score and name in the local storage, then using getItem to pull the value from the local storage and manipulating a span using .textContent to present it on the screen. I also seized the opportunity to add a little easter egg. The incumbent high score holder is Aubrey Graham (Drake's real name).
+
+![High score code](images-for-readme/Highscoreloca.jpeg)
 
 ----------
 
@@ -87,13 +95,13 @@ I have taken the time to play the game as much as possible. Numerous bugs have c
 
 #### Wins:
 
-I am very happy with the CSS and DOM manipulations. I have displayed an ability to create something fun and light hearted for the user. There were also numerous pat-on-the-back moments in the JS logic finally over coming or understand why something wasnt working.
+I am very happy with the CSS and DOM manipulations. I have displayed an ability to create something fun and light hearted for the user. There were also numerous pat-on-the-back moments in the JS logic like finally overcoming or understanding why something wasn't working.
 
 #### Hurdles:
 
 One of the biggest hurdles came from making the Drake Snake grow. I was able to increase the array of the snake visible in console logs however the index did not follow the head of the snake. This was solved by using unshift to move DrakePosition (the head of the snake) to the front each time then pop the last part of the snake. In the event that Drake reaches a record the grow snake function is called which then doesnt pop the last index of the snake.
 
-Another hurdle was figuring out the logic to prevent the user from using opposite directions. I.e right to left and up to down. This was over come by using a **ternary operator** to disable the users ability to user opposite keys. This was an essential piece of logic to prevent bugs in the collision logic as once the snake begins build in the array drakesPosition will instantly occupy the same index as the rest of the body.
+Another hurdle was figuring out the logic to prevent the user from using opposite directions. I.e right to left and up to down. This was overcome by using a **ternary operator** to disable the user's ability to use opposite keys. This was an essential piece of logic to prevent bugs in the collision logic.
 
 ![Screenshot showing ternary statements](images-for-readme/Screenshot1.jpeg)
 
