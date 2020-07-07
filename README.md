@@ -103,12 +103,12 @@ One of the biggest hurdles came from making the Drake Snake grow. I was able to 
 
 Another hurdle was figuring out the logic to prevent the user from using opposite directions. I.e right to left and up to down. This was overcome by using a **ternary operator** to disable the user's ability to use opposite keys. This was an essential piece of logic to prevent bugs in the collision logic.
 
+![Screenshot showing ternary statements](images-for-readme/Screenshot1.jpeg)
+
 -----------------------
 
 ## Takeaways.
 
 This was a good opportunity to learn how to use **JavaScript** as a full and functional app after months of practicing small disconnected functions. It also gave me the oppotunity to work to a schedule and ensure that I hit targets to ensure the game was ready for deployment on time. 
-
-![Screenshot showing ternary statements](images-for-readme/Screenshot1.jpeg)
 
 -----------------------
