@@ -109,6 +109,6 @@ Another hurdle was figuring out the logic to prevent the user from using opposit
 
 ## Takeaways.
 
-This was a good opportunity to learn how to use **JavaScript** as a full and functional app after months of practicing small disconnected functions. It also gave me the oppotunity to work to a schedule and ensure that I hit targets to ensure the game was ready for deployment on time. 
+This was a good opportunity to learn how to use **JavaScript** as a full and functional app after months of practicing small disconnected functions. It also gave me the opportunity to work to a schedule and ensure that I hit targets to ensure the game was ready for deployment on time. 
 
 -----------------------
