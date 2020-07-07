@@ -12,7 +12,7 @@ I made the decision early on to turn my choice of *Snake* into a *Drake* themed 
 
 As mentioned above this was my first project with GA but also my first experience using HTML, CSS and Javascript to create a complete game in 8 days. Within this Readme I will outline my wins and struggles.
 
----------------
+-----------------------
 
 ## Brief.
 
@@ -36,7 +36,7 @@ As mentioned above this was my first project with GA but also my first experienc
 * **Responsive design**
 * **High score table**
 
--------------
+-----------------------
 
 ## Technologies used.
 
@@ -55,7 +55,7 @@ As mentioned above this was my first project with GA but also my first experienc
 * Google Fonts
 * Google Chrome dev tools
 
--------
+-----------------------
 
 ## Approach.
 
@@ -83,15 +83,15 @@ Due to this project focusing purely on HTML, CSS and JS creating a fully functio
 
 ![High score code](images-for-readme/Highscoreloca.jpeg)
 
-----------
+-----------------------
 
 ## Bugs.
 
 I have taken the time to play the game as much as possible. Numerous bugs have come up and I have been able to diagnose and rectify them using specific console logs to target the issue. The main bug I found occured when I neglected to reset the starting direction. So if the Drake Snake crashed whilst going left or up when it returned to index 0 to begin the next game it instantly died. I diagnosed this by using console logs specifying the direction the Drake Snake was going in.
 
-----------
+-----------------------
 
-## Wins and Issues.
+## Wins and Hurdles.
 
 #### Wins:
 
@@ -102,6 +102,12 @@ I am very happy with the CSS and DOM manipulations. I have displayed an ability 
 One of the biggest hurdles came from making the Drake Snake grow. I was able to increase the array of the snake visible in console logs however the index did not follow the head of the snake. This was solved by using unshift to move DrakePosition (the head of the snake) to the front each time then pop the last part of the snake. In the event that Drake reaches a record the grow snake function is called which then doesnt pop the last index of the snake.
 
 Another hurdle was figuring out the logic to prevent the user from using opposite directions. I.e right to left and up to down. This was overcome by using a **ternary operator** to disable the user's ability to use opposite keys. This was an essential piece of logic to prevent bugs in the collision logic.
+
+-----------------------
+
+## Takeaways.
+
+This was a good opportunity to learn how to use **JavaScript** as a full and functional app after months of practicing small disconnected functions. It also gave me the oppotunity to work to a schedule and ensure that I hit targets to ensure the game was ready for deployment on time. 
 
 ![Screenshot showing ternary statements](images-for-readme/Screenshot1.jpeg)
 
