@@ -1,6 +1,6 @@
 # **SEI Project one: Snake** (only its Drake!)
 
-## Overview.
+## **Overview.**
 
 I'm sure many people reading this will remember the first time they played the legendary and timeless classic **'Snake'**. When looking at my options for my first project in my *General Assembly Software Engineering Immersive course* I was instantly drawn to putting my personal spin on a game that dominated my youth in the simpler days of the Nokia 3310.
 
@@ -14,7 +14,7 @@ As mentioned above this was my first project with GA but also my first experienc
 
 -----------------------
 
-## Brief.
+## **Brief.**
 
 #### Project wide brief:
 
@@ -38,7 +38,7 @@ As mentioned above this was my first project with GA but also my first experienc
 
 -----------------------
 
-## Technologies used.
+## **Technologies used.**
 
 #### Front End:
 
@@ -57,7 +57,7 @@ As mentioned above this was my first project with GA but also my first experienc
 
 -----------------------
 
-## Approach.
+## **Approach.**
 
 #### Grid Layout, Drake Snake Movement & Records: 
 
@@ -85,13 +85,13 @@ Due to this project focusing purely on HTML, CSS and JS creating a fully functio
 
 -----------------------
 
-## Bugs.
+## **Bugs.**
 
 I have taken the time to play the game as much as possible. Numerous bugs have come up and I have been able to diagnose and rectify them using specific console logs to target the issue. The main bug I found occured when I neglected to reset the starting direction. So if the Drake Snake crashed whilst going left or up when it returned to index 0 to begin the next game it instantly died. I diagnosed this by using console logs specifying the direction the Drake Snake was going in.
 
 -----------------------
 
-## Wins and Hurdles.
+## **Wins and Hurdles.**
 
 #### Wins:
 
@@ -107,7 +107,7 @@ Another hurdle was figuring out the logic to prevent the user from using opposit
 
 -----------------------
 
-## Takeaways.
+## **Takeaways.**
 
 This was a good opportunity to learn how to use **JavaScript** as a full and functional app after months of practicing small disconnected functions. It also gave me the oppotunity to work to a schedule and ensure that I hit targets to ensure the game was ready for deployment on time. 
 
